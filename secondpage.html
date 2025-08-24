@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Ch Haris Web">
+    <meta name="description" content="M Haris Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M Haris Web</title>
     <style>
@@ -12,6 +12,68 @@
             color: #333;
             text-align: center;
             font-family: Arial, sans-serif; /* simple clean font */
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #323330;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 22px;
+            color: #f7df1e;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a, nav ul li button {
+            color: #f7df1e;
+            text-decoration: none;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover, nav ul li button:hover {
+            color: white;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            color: #f7df1e;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #222;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+            nav ul.show { display: flex; }
+            .menu-toggle { display: block; }
         }
 
         /* Hero Section */
@@ -33,23 +95,6 @@
             color: #222;
             margin: 15px 0;
             font-weight: bold;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent; }
-        }
-
-        .typing span {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 2px solid #222;
-            white-space: nowrap;
-            animation: typing 4s steps(30, end) 1s forwards, blink 0.8s infinite;
         }
 
         /* Buttons */
@@ -132,9 +177,21 @@
 </head>
 <body>
 
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">M Haris</div>
+        <span class="menu-toggle">&#9776;</span>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="secondpage.html" target="_blank">Second Page</a></li>
+            <li><a href="thirdpage.html" target="_blank">Third Page</a></li>
+            <li><button class="toggle-btn" id="themeToggle">Dark Mode</button></li>
+        </ul>
+    </nav>
+
     <!-- Hero Section -->
     <div class="hero">
-        Welcome to the Web of <b>M Haris</b>
+        Welcome to the Web of <b> M Haris</b>
     </div>
 
     <!-- Typing Intro -->
@@ -218,6 +275,18 @@
             document.getElementById("ads-box").innerText = ads[index];
             index = (index + 1) % ads.length;
         }, 3000);
+
+        // Menu Toggle
+        document.querySelector(".menu-toggle").onclick = function() {
+            document.querySelector("nav ul").classList.toggle("show");
+        };
+
+        // Dark Mode Toggle
+        const toggleBtn = document.getElementById("themeToggle");
+        toggleBtn.onclick = function() {
+            document.body.classList.toggle("dark-mode");
+            toggleBtn.innerText = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+        };
     </script>
 
 </body>

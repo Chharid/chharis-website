@@ -11,32 +11,67 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f4f4f4;
+      transition: background 0.4s, color 0.4s;
     }
 
-    /* Navigation Bar */
+    /* Navbar */
     nav {
       background-color: #323330;
-      padding: 15px;
-      text-align: center;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-    nav a {
+    nav .logo {
+      font-size: 22px;
+      color: #f7df1e;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
       color: #f7df1e;
       text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
       transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: white;
-      text-decoration: underline;
+    nav ul li a:hover { color: white; }
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: #f7df1e;
+      cursor: pointer;
     }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #222;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 15px;
+        border-radius: 10px;
+      }
+      nav ul.show { display: flex; }
+      .menu-toggle { display: block; }
+    }
+
+    /* Dark Mode */
+    .dark-mode { background: #121212; color: #f4f4f4; }
+    .dark-mode nav { background: #111; }
+    .dark-mode footer { background: #111; color: #f7df1e; }
 
     /* Hero Section */
     .hero {
-      background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
+      background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
       height: 350px;
       display: flex;
       flex-direction: column;
@@ -73,16 +108,8 @@
       margin-bottom: 20px;
       border: 4px solid #f7df1e;
     }
-    .profile h2 {
-      margin: 0;
-      font-size: 28px;
-      color: #333;
-    }
-    .profile p {
-      font-size: 16px;
-      color: #555;
-      margin-top: 10px;
-    }
+    .profile h2 { margin: 0; font-size: 28px; color: #333; }
+    .profile p { font-size: 16px; color: #555; margin-top: 10px; }
 
     /* Content Section */
     .container {
@@ -93,10 +120,7 @@
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    .container h1 {
-      text-align: center;
-      color: #333;
-    }
+    .container h1 { text-align: center; color: #333; }
     .typing-text {
       font-size: 18px;
       color: #f7df1e;
@@ -105,18 +129,10 @@
       width: fit-content;
       white-space: nowrap;
       overflow: hidden;
-      animation: typing 4s steps(20, end) infinite alternate;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 220px; }
     }
 
     /* Social Links */
-    .social-links {
-      text-align: center;
-      margin: 20px 0;
-    }
+    .social-links { text-align: center; margin: 20px 0; }
     .social-links a {
       display: inline-block;
       margin: 10px;
@@ -129,23 +145,18 @@
     .instagram { background: #e4405f; color: white; }
     .facebook { background: #3b5998; color: white; }
     .youtube { background: #ff0000; color: white; }
-    .social-links a:hover {
-      opacity: 0.8;
-    }
+    .social-links a:hover { opacity: 0.8; }
 
     /* CV Buttons */
-    .cv-buttons {
-      text-align: center;
-      margin-top: 20px;
-    }
+    .cv-buttons { text-align: center; margin-top: 20px; }
     .cv-buttons a {
       margin: 10px;
       padding: 10px 20px;
       border-radius: 25px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
       display: inline-block;
+      transition: 0.3s;
     }
     .download { background: #28a745; color: white; }
     .view { background: #007bff; color: white; }
@@ -177,32 +188,39 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="page2.html">About</a>
-    <a href="page3.html">Profile</a>
-    <a href="contact.html">Contact</a>
+    <div class="logo">M Haris</div>
+    <span class="menu-toggle">&#9776;</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="page2.html">About</a></li>
+      <li><a href="page3.html">Profile</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button class="toggle-btn" id="themeToggle">Dark Mode</button></li>
+    </ul>
   </nav>
 
   <!-- Hero Section -->
-  <div class="hero">
-    <h1>Welcome to My Profile</h1>
+  <div class="hero">    
+    <h1 class="typing-text" id="typing"></h1>  
+    <h1>Welcome to My Profile</h1> 
   </div>
 
   <!-- Profile Section -->
   <div class="profile">
     <img src="image.jpg" alt="M Haris">
-    <h2>CM Haris</h2>
+    <h2>M Haris</h2>
     <p>Hello, I am M Haris. This is my profile page where you can learn more about me, my projects, and my journey. I love technology, coding, and building creative websites.</p>
   </div>
 
   <!-- Content Section -->
   <div class="container">
     <h1>M Haris</h1>
-    <p class="typing-text">Hi, I’m M Haris!</p>
-    <p>I’m a student who loves technology, gaming, and creativity. I enjoy learning new things, making animations, and exploring the world of computers. My goal is to keep improving my skills and share what I learn with others.</p>
     
+    <p>I’m a student who loves technology, gaming, and creativity. I enjoy learning new things, making animations, and exploring the world of computers. My goal is to keep improving my skills and share what I learn with others.</p>
+
+    <!-- Social Links -->
     <div class="social-links">
       <a href="https://instagram.com/yourusername" target="_blank" class="instagram">
         <i class="fab fa-instagram"></i> Instagram
@@ -227,9 +245,9 @@
 
     <!-- Rotating Ads -->
     <div class="ad-box">
-      <div class="ad-text active"><p><strong>Ad 1:</strong> Buy the best electronics at Haris Herbal Store!</p></div>
-      <div class="ad-text"><p><strong>Ad 2:</strong> Join our Academy for top-quality education.</p></div>
-      <div class="ad-text"><p><strong>Ad 3:</strong> Advertise here! Contact info@yourwebsite.com</p></div>
+      <div class="ad-text active"><strong>Ad 1:</strong> Buy the best electronics at Haris Herbal Store!</div>
+      <div class="ad-text"><strong>Ad 2:</strong> Join our Academy for top-quality education.</div>
+      <div class="ad-text"><strong>Ad 3:</strong> Advertise here! Contact info@yourwebsite.com</div>
     </div>
   </div>
 
@@ -238,8 +256,39 @@
     <p>© 2025 M Haris. All rights reserved. | Made in Pakistan 🇵🇰</p>
   </footer>
 
-  <!-- Rotating Ads Script -->
+  <!-- Scripts -->
   <script>
+    // Typing Effect
+    const texts = [
+      "Hi, I’m M Haris!",
+      "Learning JavaScript with Fun!",
+      "Building Creative Projects!"
+    ];
+    let i = 0, j = 0, del = false;
+    function typeEffect() {
+      const el = document.getElementById("typing");
+      const txt = texts[i];
+      el.innerHTML = txt.substring(0, j);
+      j += del ? -1 : 1;
+      if (!del && j === txt.length) { del = true; setTimeout(typeEffect, 2000); }
+      else if (del && j === 0) { del = false; i = (i + 1) % texts.length; setTimeout(typeEffect, 500); }
+      else { setTimeout(typeEffect, del ? 100 : 150); }
+    }
+    typeEffect();
+
+    // Menu Toggle
+    document.querySelector(".menu-toggle").onclick = function() {
+      document.querySelector("nav ul").classList.toggle("show");
+    };
+
+    // Dark Mode Toggle
+    const toggleBtn = document.getElementById("themeToggle");
+    toggleBtn.onclick = function() {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.innerText = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+    };
+
+    // Rotating Ads
     let ads = document.querySelectorAll(".ad-text");
     let index = 0;
     setInterval(() => {
@@ -248,5 +297,6 @@
       ads[index].classList.add("active");
     }, 4000);
   </script>
+
 </body>
 </html>
