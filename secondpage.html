@@ -7,23 +7,90 @@
     <title>Ch Haris Web</title>
     <style>
         body {
+            margin: 0;
             background-color: #f2f2f2;
             color: #333;
             text-align: center;
-            font-family: cursive;
+            font-family: Arial, sans-serif; /* simple clean font */
         }
-        h1 {
-            color: #0066cc;
-            margin-top: 20px;
+
+        /* Hero Section */
+        .hero {
+            background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px black;
         }
+
+        /* Typing Effect */
+        .typing {
+            font-size: 20px;
+            color: #222;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .typing span {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 2px solid #222;
+            white-space: nowrap;
+            animation: typing 4s steps(30, end) 1s forwards, blink 0.8s infinite;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin: 15px;
+        }
+        .buttons a {
+            text-decoration: none;
+            background: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            margin: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .buttons a:hover {
+            background: #004c99;
+        }
+
+        /* Ads Section */
+        .ads {
+            width: 85%;
+            margin: 25px auto;
+            padding: 15px;
+            border: 2px dashed #666;
+            font-weight: bold;
+            background: #fffbe6;
+        }
+
+        /* Teachers Table */
         h2 {
             margin-top: 25px;
             color: #cc6600;
+            font-weight: bold;
         }
         table {
             margin: 20px auto;
             border-collapse: collapse;
             width: 85%;
+            font-weight: bold;
         }
         th, td {
             border: 1px solid #999;
@@ -40,32 +107,47 @@
         tr:hover td {
             background-color: #f9f9f9;
         }
-        .teacher-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
+
+        /* Info Box */
         .info {
             margin: 30px auto;
             max-width: 650px;
             padding: 15px;
             background-color: #ffffff;
             border: 1px solid #ccc;
+            font-weight: bold;
         }
         .info h3 {
             color: #cc6600;
         }
+
+        /* Footer */
         .copy {
             margin: 15px 0;
             font-size: 14px;
             color: #555;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Web of M Haris</h1>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        Welcome to the Web of <b>M Haris</b>
+    </div>
+
+    <!-- Typing Intro -->
+    <div class="typing"><span>This page is made with ❤️ by <b>M Haris</b></span></div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <a href="#">📄 View CV</a>
+        <a href="#">⬇️ Download CV</a>
+    </div>
+
+    <!-- Ads Section -->
+    <div class="ads" id="ads-box">Ad: Learn Coding with Haris!</div>
 
     <!-- Teachers Table -->
     <h2>My Best Teachers</h2>
@@ -76,38 +158,38 @@
             <th>Qualities</th>
         </tr>
         <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Tousef</td>
-            <td>Mathematics</td>
+            <td><b>Sir Tousef</b></td>
+            <td><b>Mathematics</b></td>
             <td>Explains every step clearly, patient with weak students, encourages practice</td>
         </tr>
         <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Arsad</td>
-            <td>English</td>
+            <td><b>Sir Arsad</b></td>
+            <td><b>English</b></td>
             <td>Kind, motivates students to speak confidently, uses creative teaching methods</td>
         </tr>
         <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Kamran Siraj</td>
-            <td>Physics</td>
+            <td><b>Sir Kamran Siraj</b></td>
+            <td><b>Physics</b></td>
             <td>Makes learning fun, uses experiments, inspires curiosity about the world</td>
         </tr>
         <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Bilal</td>
-            <td>Urdu</td>
+            <td><b>Sir Bilal</b></td>
+            <td><b>Urdu</b></td>
             <td>Explains poetry beautifully, caring, helps students improve writing skills</td>
         </tr>
         <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Faisal</td>
-            <td>Computer</td>
+            <td><b>Sir Faisal</b></td>
+            <td><b>Computer</b></td>
             <td>Teaches with real-life examples, very helpful, always up to date with technology</td>
         </tr>
         <tr>
-            <td><img src="file.jpg" class="teacher-img" alt="Sir Salman Ahmad"> Sir Salman Ahmad</td>
-            <td>English</td>
+            <td><b>Sir Salman Ahmad</b></td>
+            <td><b>English</b></td>
             <td>Very supportive, improves students' writing skills, inspires confidence in public speaking</td>
         </tr>
         <tr> 
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Adnan Nawaz</td>
-            <td>Biology</td>
+            <td><b>Sir Adnan Nawaz</b></td>
+            <td><b>Biology</b></td>
             <td>Explains concepts with real-life examples, encourages observation, makes science exciting</td>
         </tr>
     </table>
@@ -118,9 +200,25 @@
         <p>This webpage is made by <b>M Haris</b> to thank his teachers. They teach us, guide us, and help us become good students and good people.</p>
     </div>
 
-    <!-- Copyright -->
+    <!-- Footer -->
     <div class="copy">
-        &copy; 2025 M Haris. All Rights Reserved.
+        &copy; 2025 <b>Ch Haris</b>. All rights reserved. | Made in <b>Pakistan 🇵🇰</b>
     </div>
+
+    <script>
+        // Rotating Ads
+        const ads = [
+            "Ad: Learn Coding with Haris!",
+            "Ad: Subscribe to Haris's YouTube 🎥",
+            "Ad: Follow Haris on GitHub 💻",
+            "Ad: Education is the key to success! 📚"
+        ];
+        let index = 0;
+        setInterval(() => {
+            document.getElementById("ads-box").innerText = ads[index];
+            index = (index + 1) % ads.length;
+        }, 3000);
+    </script>
+
 </body>
 </html>

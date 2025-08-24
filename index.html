@@ -1,41 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Ch Haris</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
       background: #f4f4f4;
+      color: #333;
+      transition: background 0.4s, color 0.4s;
     }
 
-    /* Navigation Bar */
+    /* Navigation */
     nav {
       background-color: #323330;
-      padding: 15px;
-      text-align: center;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    nav a {
+    nav .logo {
+      font-size: 22px;
       color: #f7df1e;
-      text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
-      transition: color 0.3s ease;
-      display: inline-block;
     }
 
-    nav a:hover {
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #f7df1e;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
       color: white;
     }
 
-    /* Hero Banner */
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: #f7df1e;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #222;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 15px;
+        border-radius: 10px;
+      }
+      nav ul.show { display: flex; }
+      .menu-toggle { display: block; }
+    }
+
+    /* Hero Section */
     .hero {
-      background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
       height: 350px;
       display: flex;
       flex-direction: column;
@@ -43,19 +84,17 @@
       align-items: center;
       color: white;
       text-align: center;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.5);
-      padding: 0 15px;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .hero h1 {
-      font-size: 40px;
+      font-size: 42px;
       margin: 0;
       background: rgba(0,0,0,0.6);
       padding: 10px 20px;
       border-radius: 10px;
     }
 
-    /* Typing Text */
     #typing {
       font-size: 20px;
       font-weight: bold;
@@ -64,33 +103,32 @@
       margin-top: 15px;
       white-space: nowrap;
       border-right: 3px solid #f7df1e;
-      display: inline-block;
-      overflow: hidden;
       animation: blink 0.7s infinite;
-      background: rgba(0,0,0,0.5);
       padding: 5px 10px;
       border-radius: 5px;
     }
 
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
+    @keyframes blink { 50% { border-color: transparent; } }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
-    /* Profile Picture */
+    /* Profile */
     .profile {
       text-align: center;
-      margin: 30px;
+      margin: 40px 0;
     }
 
     .profile img {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
       border: 4px solid #323330;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease;
     }
 
-    /* Card Section */
+    .profile img:hover { transform: scale(1.1) rotate(5deg); }
+
+    /* Cards */
     .cards {
       display: flex;
       justify-content: center;
@@ -103,14 +141,23 @@
       background: white;
       padding: 20px;
       border-radius: 15px;
-      width: 250px;
+      width: 270px;
       box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.8s ease;
     }
 
     .card:hover {
-      transform: translateY(-10px);
+      transform: scale(1.05);
+      box-shadow: 0px 8px 25px rgba(0,0,0,0.3);
     }
 
     .card h3 {
@@ -123,6 +170,16 @@
       color: #555;
     }
 
+    /* Dark Mode */
+    .dark-mode {
+      background: #121212;
+      color: #f4f4f4;
+    }
+
+    .dark-mode nav { background: #111; }
+    .dark-mode footer { background: #111; }
+    .dark-mode .card { background: #222; color: #ddd; }
+
     /* Footer */
     footer {
       background: #323330;
@@ -132,162 +189,108 @@
       margin-top: 50px;
     }
 
-    /* Clickable Button */
-    h3.clickable {
-      color: white;
-      text-align: center;
-      padding: 10px 20px;
-      border-radius: 30px;
-      box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
-      background-color: #444;
-      width: fit-content;
-      margin: 20px auto;
-      transition: all 0.5s ease;
+    .toggle-btn {
+      background: #f7df1e;
+      color: #323330;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
       cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    h3.clickable:hover {
-      transform: scale(1.1);
-      color: #f7df1e;
-      background-color: #222;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 28px;
-        padding: 8px 15px;
-      }
-
-      #typing {
-        font-size: 16px;
-      }
-
-      .cards {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .card {
-        width: 90%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav a {
-        display: block;
-        margin: 8px 0;
-      }
-
-      .hero {
-        height: 280px;
-      }
-
-      .profile img {
-        width: 120px;
-        height: 120px;
-      }
-
-      .hero h1 {
-        font-size: 22px;
-      }
-
-      #typing {
-        font-size: 14px;
-      }
-    }
+    .toggle-btn:hover { background: #ddd; }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Navbar -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="secondpage.html" target="_blank">Second Page</a>
-    <a href="" target="_blank"></a>
+    <div class="logo">Ch Haris</div>
+    <span class="menu-toggle">&#9776;</span>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="secondpage.html" target="_blank">Second Page</a></li>
+      <li><a href="thirdpage.html" target="_blank">Third Page</a></li>
+      <li><button class="toggle-btn" id="themeToggle">Dark Mode</button></li>
+    </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <div class="hero">
     <h1>Welcome, I'm Ch Haris</h1>
     <span id="typing"></span>
   </div>
 
-  <!-- Profile Picture -->
+  <!-- Profile -->
   <div class="profile">
-    <img src="https://photos.app.goo.gl/DQuEx2WsTbktgA877" alt="image.jpg">
+    <img src="https://via.placeholder.com/160" alt="Profile Image">
   </div>
 
   <!-- Info Cards -->
   <div class="cards">
-    <div class="card">
-      <h3>👨‍💻 About Me</h3>
-      <p>I’m Ch Haris, a student learning programming and web development. This is my first website built with HTML, CSS, and JavaScript.</p>
-    </div>
-    <div class="card">
-      <h3>📚 Skills</h3>
-      <p>HTML, CSS, JavaScript basics. Currently exploring animations and interactive pages.</p>
-    </div>
-    <div class="card">
-      <h3>🚀 Goals</h3>
-      <p>I want to create amazing websites and games, and keep improving my coding skills.</p>
-    </div>
+    <div class="card"><h3>👨‍💻 About Me</h3><p>I’m learning programming and web development. This is my first advanced website with HTML, CSS, and JavaScript.</p></div>
+    <div class="card"><h3>📚 Skills</h3><p>HTML, CSS, JavaScript basics. Exploring animations, interactive pages, and dark/light themes.</p></div>
+    <div class="card"><h3>🚀 Goals</h3><p>I want to build creative websites and games while improving my coding every day.</p></div>
   </div>
-
-  <div id="info" style="text-align:center;"></div>
-
-  <script>
-    const texts = [
-      "Ch Haris - Web Developer in the Making 🚀",
-      "Learning JavaScript with Fun ✨",
-      "Click Below to See My Third Page!"
-    ];
-
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let speed = 70; // faster typing
-
-    function typeLoop() {
-      const typingElement = document.getElementById("typing");
-      const currentText = texts[textIndex];
-
-      if (isDeleting) {
-        typingElement.innerHTML = currentText.substring(0, charIndex--);
-        speed = 40; // delete speed
-      } else {
-        typingElement.innerHTML = currentText.substring(0, charIndex++);
-        speed = 70; // typing speed
-      }
-
-      if (!isDeleting && charIndex === currentText.length) {
-        speed = 1500; // pause before deleting
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        speed = 500; // pause before typing next
-      }
-
-      setTimeout(typeLoop, speed);
-    }
-
-    typeLoop();
-
-    // Show on page inside h3
-    document.getElementById("info").innerHTML = 
-      "<h3 class='clickable' id='changingText'>Click here to open my Third page</h3>";
-
-    // Make h3 clickable → open another page in NEW TAB
-    document.getElementById("changingText").onclick = function() {
-      window.open("thirdpage.html", "_blank");  
-    };
-  </script>
 
   <!-- Footer -->
   <footer>
     &copy; 2025 Ch Haris. All rights reserved. | Made in Pakistan 🇵🇰
   </footer>
 
+  <script>
+  // Typing Effect
+  const texts = [
+    "Ch Haris - Web Developer in the Making 🚀",
+    "Learning JavaScript with Fun ✨",
+    "Building Creative Projects 🌍"
+  ];
+  let i = 0, j = 0, del = false;
+  
+  function typeEffect() {
+    const el = document.getElementById("typing");
+    const txt = texts[i];
+    el.innerHTML = txt.substring(0, j);
+    j += del ? -1 : 1;
+
+    if (!del && j === txt.length) {
+      del = true;
+      setTimeout(typeEffect, 1500); // pause after full text
+    }
+    else if (del && j === 0) {
+      del = false;
+      i = (i + 1) % texts.length;
+      setTimeout(typeEffect, 300); // pause before typing next
+    }
+    else {
+      setTimeout(typeEffect, del ? 120 : 150); // slower speed
+    }
+  }
+
+  typeEffect();
+
+    // Menu Toggle
+    document.querySelector(".menu-toggle").onclick=function(){
+      document.querySelector("nav ul").classList.toggle("show");
+    };
+
+    // Dark Mode Toggle
+    const toggleBtn=document.getElementById("themeToggle");
+    toggleBtn.onclick=function(){
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.innerText=document.body.classList.contains("dark-mode")?"Light Mode":"Dark Mode";
+    };
+
+    // Scroll Reveal
+    const cards=document.querySelectorAll(".card");
+    window.addEventListener("scroll",()=>{
+      cards.forEach(card=>{
+        const pos=card.getBoundingClientRect().top;
+        if(pos<window.innerHeight-50){card.classList.add("show");}
+      });
+    });
+  </script>
 </body>
 </html>
