@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ch Haris </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #323330;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #f7df1e;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80") no-repeat center center/cover;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.5);
+      padding: 0 15px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    /* Typing Text */
+    #typing {
+      font-size: 20px;
+      font-weight: bold;
+      color: #f7df1e;
+      font-family: monospace;
+      margin-top: 15px;
+      white-space: nowrap;
+      border-right: 3px solid #f7df1e;
+      display: inline-block;
+      overflow: hidden;
+      animation: blink 0.7s infinite;
+      background: rgba(0,0,0,0.5);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Profile Picture */
+    .profile {
+      text-align: center;
+      margin: 30px;
+    }
+
+    .profile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+      border: 4px solid #323330;
+    }
+
+    /* Card Section */
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      color: #323330;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Footer */
+    footer {
+      background: #323330;
+      color: #f7df1e;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+
+    /* Clickable Button */
+    h3.clickable {
+      color: white;
+      font-family: cursive;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 30px;
+      box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
+      background-color: #444;
+      width: fit-content;
+      margin: 20px auto;
+      transition: all 0.5s ease;
+      cursor: pointer;
+    }
+
+    h3.clickable:hover {
+      transform: scale(1.1);
+      color: #f7df1e;
+      background-color: #222;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 28px;
+        padding: 8px 15px;
+      }
+
+      #typing {
+        font-size: 16px;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav a {
+        display: block;
+        margin: 8px 0;
+      }
+
+      .hero {
+        height: 280px;
+      }
+
+      .profile img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .hero h1 {
+        font-size: 22px;
+      }
+
+      #typing {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="secondpage.html" target="_blank">Second Page</a>
+    <a href="https://www.javascript.com/" target="_blank">Learn JS</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Welcome, I'm Ch Haris</h1>
+    <span id="typing"></span>
+  </div>
+
+  <!-- Profile Picture -->
+  <div class="profile">
+    <img src="https://photos.app.goo.gl/DQuEx2WsTbktgA877" alt="image.jpg">
+  </div>
+
+  <!-- Info Cards -->
+  <div class="cards">
+    <div class="card">
+      <h3>👨‍💻 About Me</h3>
+      <p>I’m Ch Haris, a student learning programming and web development. This is my first website built with HTML, CSS, and JavaScript.</p>
+    </div>
+    <div class="card">
+      <h3>📚 Skills</h3>
+      <p>HTML, CSS, JavaScript basics. Currently exploring animations and interactive pages.</p>
+    </div>
+    <div class="card">
+      <h3>🚀 Goals</h3>
+      <p>I want to create amazing websites and games, and keep improving my coding skills.</p>
+    </div>
+  </div>
+
+  <div id="info" style="text-align:center;"></div>
+
+  <script>
+    const texts = [
+      "Ch Haris - Web Developer in the Making 🚀",
+      "Learning JavaScript with Fun ✨",
+      "Click Below to See My Third Page!"
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let speed = 70; // faster typing
+
+    function typeLoop() {
+      const typingElement = document.getElementById("typing");
+      const currentText = texts[textIndex];
+
+      if (isDeleting) {
+        typingElement.innerHTML = currentText.substring(0, charIndex--);
+        speed = 40; // delete speed
+      } else {
+        typingElement.innerHTML = currentText.substring(0, charIndex++);
+        speed = 70; // typing speed
+      }
+
+      if (!isDeleting && charIndex === currentText.length) {
+        speed = 1500; // pause before deleting
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        speed = 500; // pause before typing next
+      }
+
+      setTimeout(typeLoop, speed);
+    }
+
+    typeLoop();
+
+    // Show on page inside h3
+    document.getElementById("info").innerHTML = 
+      "<h3 class='clickable' id='changingText'>Click here to open my Third page</h3>";
+
+    // Make h3 clickable → open another page in NEW TAB
+    document.getElementById("changingText").onclick = function() {
+      window.open("thirdpage.html", "_blank");  
+    };
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Ch Haris | All Rights Reserved
+  </footer>
+
+</body>
+</html>
