@@ -1,126 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Ch Haris Web">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ch Haris Web</title>
-    <style>
-        body {
-            background-color: #f2f2f2;
-            color: #333;
-            text-align: center;
-            font-family: cursive;
-        }
-        h1 {
-            color: #0066cc;
-            margin-top: 20px;
-        }
-        h2 {
-            margin-top: 25px;
-            color: #cc6600;
-        }
-        table {
-            margin: 20px auto;
-            border-collapse: collapse;
-            width: 85%;
-        }
-        th, td {
-            border: 1px solid #999;
-            padding: 10px;
-        }
-        th {
-            background-color: #e6e6e6;
-            color: #000;
-        }
-        td {
-            background-color: #fff;
-            text-align: left;
-        }
-        tr:hover td {
-            background-color: #f9f9f9;
-        }
-        .teacher-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
-        .info {
-            margin: 30px auto;
-            max-width: 650px;
-            padding: 15px;
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-        }
-        .info h3 {
-            color: #cc6600;
-        }
-        .copy {
-            margin: 15px 0;
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ch Haris - Introduction</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+    }
+
+    /* ---- Cover & Profile ---- */
+    .cover {
+      background: url("cover.jpg") no-repeat center center/cover;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      position: absolute;
+      bottom: -90px;
+      background: white;
+      box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+      animation: glow 5s infinite alternate;
+    }
+    @keyframes glow {
+      0%   { box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; }  
+      25%  { box-shadow: 0 0 20px #ff9900, 0 0 40px #ff9900; }  
+      50%  { box-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14; }  
+      75%  { box-shadow: 0 0 20px #00d9ff, 0 0 40px #00d9ff; }  
+      100% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }  
+    }
+
+    /* Responsive Profile */
+    @media (max-width: 600px) {
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+        bottom: -60px;
+      }
+    }
+
+    /* ---- Content ---- */
+    .container {
+      padding: 120px 20px 40px;
+    }
+    h1 { font-size: 2.2rem; margin: 10px 0; }
+
+    /* Typing Text */
+    .typing-text {
+      font-size: 1.3rem;
+      border-right: 2px solid #fff;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(30, end) infinite, blink 0.7s infinite;
+    }
+    @keyframes typing {
+      0% { width: 0 }
+      50% { width: 100% }
+      100% { width: 0 }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    /* ---- Social Links ---- */
+    .social-links a {
+      margin: 10px 15px;
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+    .social-links a.instagram { background: #E1306C; }
+    .social-links a.facebook { background: #1877F2; }
+    .social-links a.youtube { background: #FF0000; }
+    .social-links a:hover {
+      transform: scale(1.1);
+      animation: glow 3s infinite alternate;
+    }
+
+    /* ---- CV Buttons ---- */
+    .cv-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .cv-buttons a {
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+    .cv-buttons a.download {
+      background: #39ff14;
+      color: black;
+    }
+    .cv-buttons a.download:hover {
+      background: #00d9ff;
+      transform: scale(1.1);
+    }
+    .cv-buttons a.view {
+      background: #ff9900;
+      color: black;
+    }
+    .cv-buttons a.view:hover {
+      background: #ff00ff;
+      transform: scale(1.1);
+    }
+
+    /* ---- Ad Box ---- */
+    .ad-box {
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 2px dashed #fff;
+      border-radius: 12px;
+      max-width: 400px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .ad-text { display: none; } 
+    .ad-text.active { display: block; }
+
+    /* ---- Footer ---- */
+    footer {
+      margin-top: 50px;
+      padding: 15px;
+      background: rgba(0,0,0,0.6);
+      font-size: 0.9rem;
+      box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+      animation: glow 6s infinite alternate;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to the Web of M Haris</h1>
+  <!-- Cover Section -->
+  <div class="cover">
+    <a href="https://www.youtube.com/@ch_m_haris" target="_blank">
+      <img src="image.jpg" alt="Ch Haris" class="profile-pic">
+    </a>
+  </div>
 
-    <!-- Teachers Table -->
-    <h2>My Best Teachers</h2>
-    <table>
-        <tr>
-            <th>Teacher</th>
-            <th>Subject</th>
-            <th>Qualities</th>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Tousef</td>
-            <td>Mathematics</td>
-            <td>Explains every step clearly, patient with weak students, encourages practice</td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Arsad</td>
-            <td>English</td>
-            <td>Kind, motivates students to speak confidently, uses creative teaching methods</td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Kamran Siraj</td>
-            <td>Physics</td>
-            <td>Makes learning fun, uses experiments, inspires curiosity about the world</td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Bilal</td>
-            <td>Urdu</td>
-            <td>Explains poetry beautifully, caring, helps students improve writing skills</td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Faisal</td>
-            <td>Computer</td>
-            <td>Teaches with real-life examples, very helpful, always up to date with technology</td>
-        </tr>
-        <tr>
-            <td><img src="file.jpg" class="teacher-img" alt="Sir Salman Ahmad"> Sir Salman Ahmad</td>
-            <td>English</td>
-            <td>Very supportive, improves students' writing skills, inspires confidence in public speaking</td>
-        </tr>
-        <tr> 
-            <td><img src="https://via.placeholder.com/40" class="teacher-img"> Sir Adnan Nawaz</td>
-            <td>Biology</td>
-            <td>Explains concepts with real-life examples, encourages observation, makes science exciting</td>
-        </tr>
-    </table>
-
-    <!-- Information Section -->
-    <div class="info">
-        <h3>About This Page</h3>
-        <p>This webpage is made by <b>M Haris</b> to thank his teachers. They teach us, guide us, and help us become good students and good people.</p>
+  <!-- Content Section -->
+  <div class="container">
+    <h1>Ch Haris</h1>
+    <p class="typing-text">Hi, I’m Ch Haris!</p>
+    <p>I’m a student who loves technology, gaming, and creativity. I enjoy learning new things, making animations, and exploring the world of computers. My goal is to keep improving my skills and share what I learn with others.</p>
+    
+    <div class="social-links">
+      <a href="https://instagram.com/yourusername" target="_blank" class="instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://www.facebook.com/chmharis295" target="_blank" class="facebook">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://www.youtube.com/@ch_m_haris" target="_blank" class="youtube">
+        <i class="fab fa-youtube"></i> YouTube
+      </a>
     </div>
 
-    <!-- Copyright -->
-    <div class="copy">
-        &copy; 2025 M Haris. All Rights Reserved.
+    <!-- CV Buttons -->
+    <div class="cv-buttons">
+      <a href="Haris_CV.pdf" download class="download">
+        <i class="fas fa-download"></i> Download CV
+      </a>
+      <a href="Haris_CV.pdf" target="_blank" class="view">
+        <i class="fas fa-eye"></i> View CV Online
+      </a>
     </div>
+
+    <!-- Rotating Ads -->
+    <div class="ad-box">
+      <div class="ad-text active"><p><strong>Ad 1:</strong> Buy the best electronics at Haris Store!</p></div>
+      <div class="ad-text"><p><strong>Ad 2:</strong> Join our Academy for top-quality education.</p></div>
+      <div class="ad-text"><p><strong>Ad 3:</strong> Advertise here! Contact info@yourwebsite.com</p></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Ch Haris. All rights reserved. | Made in Pakistan 🇵🇰</p>
+  </footer>
+
+  <!-- Script for Rotating Ads -->
+  <script>
+    let ads = document.querySelectorAll(".ad-text");
+    let index = 0;
+    setInterval(() => {
+      ads[index].classList.remove("active");
+      index = (index + 1) % ads.length;
+      ads[index].classList.add("active");
+    }, 4000); // changes every 4 seconds
+  </script>
 </body>
 </html>
