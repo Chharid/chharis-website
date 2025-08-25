@@ -26,26 +26,30 @@
       z-index: 1000;
     }
 
-    nav .logo {
-      font-size: 22px;
-      color: #f7df1e;
-      font-weight: bold;
+    nav .logo img {
+      height: 40px;
+      width: auto;
     }
 
     nav ul {
       list-style: none;
       display: flex;
       gap: 20px;
+      align-items: center;
     }
 
-    nav ul li a {
+    nav ul li a, nav ul li button {
       color: #f7df1e;
       text-decoration: none;
       font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
       transition: color 0.3s ease;
     }
 
-    nav ul li a:hover {
+    nav ul li a:hover, nav ul li button:hover {
       color: white;
     }
 
@@ -207,13 +211,17 @@
 
   <!-- Navbar -->
   <nav>
-    <div class="logo">M Haris</div>
+    <div class="logo">
+      <img src="https://via.placeholder.com/120x40?text=LOGO" alt="Website Logo">
+    </div>
     <span class="menu-toggle">&#9776;</span>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="secondpage.html" target="_blank">Second Page</a></li>
       <li><a href="thirdpage.html" target="_blank">Third Page</a></li>
       <li><button class="toggle-btn" id="themeToggle">Dark Mode</button></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><a href="login.html">Login</a></li>
     </ul>
   </nav>
 
@@ -257,40 +265,42 @@
 
     if (!del && j === txt.length) {
       del = true;
-      setTimeout(typeEffect, 1500); // pause after full text
+      setTimeout(typeEffect, 1500);
     }
     else if (del && j === 0) {
       del = false;
       i = (i + 1) % texts.length;
-      setTimeout(typeEffect, 300); // pause before typing next
+      setTimeout(typeEffect, 300);
     }
     else {
-      setTimeout(typeEffect, del ? 120 : 150); // slower speed
+      setTimeout(typeEffect, del ? 120 : 150);
     }
   }
 
   typeEffect();
 
-    // Menu Toggle
-    document.querySelector(".menu-toggle").onclick=function(){
-      document.querySelector("nav ul").classList.toggle("show");
-    };
+  // Menu Toggle
+  document.querySelector(".menu-toggle").onclick = function() {
+    document.querySelector("nav ul").classList.toggle("show");
+  };
 
-    // Dark Mode Toggle
-    const toggleBtn=document.getElementById("themeToggle");
-    toggleBtn.onclick=function(){
-      document.body.classList.toggle("dark-mode");
-      toggleBtn.innerText=document.body.classList.contains("dark-mode")?"Light Mode":"Dark Mode";
-    };
+  // Dark Mode Toggle
+  const toggleBtn = document.getElementById("themeToggle");
+  toggleBtn.onclick = function() {
+    document.body.classList.toggle("dark-mode");
+    toggleBtn.innerText = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+  };
 
-    // Scroll Reveal
-    const cards=document.querySelectorAll(".card");
-    window.addEventListener("scroll",()=>{
-      cards.forEach(card=>{
-        const pos=card.getBoundingClientRect().top;
-        if(pos<window.innerHeight-50){card.classList.add("show");}
-      });
+  // Scroll Reveal
+  const cards = document.querySelectorAll(".card");
+  window.addEventListener("scroll", () => {
+    cards.forEach(card => {
+      const pos = card.getBoundingClientRect().top;
+      if (pos < window.innerHeight - 50) {
+        card.classList.add("show");
+      }
     });
+  });
   </script>
 </body>
 </html>
