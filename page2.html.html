@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M Haris — Teachers</title>
+<link rel="icon" href="logo.png" />
+<style>
+  :root{
+    --bg:#f2f2f2; --card:#fff; --text:#222; --accent:#cc6600; --nav:#323330; --accent-contrast:#f7df1e;
+  }
+  [data-theme="dark"]{
+    --bg:#070707; --card:#0f0f10; --text:#e6e6e6; --nav:#0b0b0b; --accent-contrast:#f7df1e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    background:var(--bg); color:var(--text); line-height:1.45; display:flex; flex-direction:column; min-height:100vh;
+  }
+  nav{
+    display:flex; justify-content:space-between; align-items:center; padding:12px 18px;
+    position:sticky; top:0; background:var(--nav); color:var(--accent-contrast); z-index:1200;
+  }
+  .brand img{width:58px;height:58px;border-radius:50%;border:3px solid var(--accent)}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand .logo{width:46px; height:46px; border-radius:10px; background:var(--accent-contrast); display:grid; place-items:center; font-weight:800; color:#111; box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+  .brand img{width:46px; height:46px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+  .brand h1{font-size:16px; color:#fff; margin:0;}
+  .nav-right{display:flex; gap:10px; align-items:center;}
+  .menu-toggle{display:none; font-size:22px; color:var(--accent-contrast); background:none; border:0; cursor:pointer;}
+  .nav-actions{display:flex; gap:10px; align-items:center;}
+  .btn{background:var(--accent); color:#fff; padding:8px 12px; border-radius:8px; border:0; font-weight:700; text-decoration:none;}
+  .link{color:var(--accent-contrast); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:8px;}
+  .link:hover, .btn:hover{opacity:0.92;}
+  .hero{
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.36), rgba(0,0,0,0.18)), url("https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1600&q=60");
+    background-size:cover; background-position:center; min-height:260px; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding:40px 20px;
+
+  }
+  .hero-inner{max-width:980px;}
+  .hero h2{font-size:28px; margin-bottom:8px;}
+  .typing{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:#ffd98a; font-weight:700; margin-top:6px; letter-spacing:0.6px;}
+  .container{max-width:1100px; margin:28px auto; padding:0 18px; flex:1; width:100%;}
+  .info{background:var(--card); border-radius:12px; padding:14px 16px; box-shadow:0 8px 30px rgba(0,0,0,0.04); display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:18px;}
+  .info p{margin:0; font-weight:700; color:var(--text);}
+  .ad{font-weight:800; color:var(--accent); background:linear-gradient(90deg, rgba(255,230,200,0.25), rgba(255,255,255,0.02)); padding:8px 12px; border-radius:10px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:16px 0 36px;}
+  .card{background:var(--card); border-radius:12px; padding:14px; box-shadow:0 8px 20px rgba(10,10,10,0.06); transition:transform .25s ease,box-shadow .25s ease; display:flex; flex-direction:column; gap:8px; min-height:120px;}
+  .card:hover{transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.08);}
+  .card h3{margin:0; font-size:18px; color:var(--accent);}
+  .role{font-weight:800; color:var(--text);}
+  .desc{color:#666; font-weight:700; font-size:14px;}
+  [data-theme="dark"] .desc{color:#bfbfbf;}
+  .tag{margin-top:auto; align-self:flex-start; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.04); font-weight:800; font-size:13px;}
+  footer{padding:18px; text-align:center; color:var(--text); font-weight:700;}
+  .small{font-size:13px; color:rgba(0,0,0,0.5);}
+  [data-theme="dark"] .small{color:rgba(255,255,255,0.6);}
+  @media(max-width:720px){.menu-toggle{display:block} .nav-actions{display:none} .info{flex-direction:column; align-items:flex-start; gap:8px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    
+    <img src="logo.png" alt="M Haris logo"></div>
+    <div>
+      <h1>M Haris</h1>
+      <div style="font-size:12px;color:rgba(255,255,255,0.75)">Web • Learn • Share</div>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <button class="menu-toggle" aria-expanded="false">☰</button>
+    <div class="nav-actions" id="navActions">
+      <a class="link" href="index.html.html">Home</a>
+      <a class="link" href="page2.html.html">Teachers</a>
+      <a class="link" href="page3.html.html">Page 3</a>
+      <a class="link" href="index.html.html#about">About</a>
+      <a class="link" href="index.html.html#projects">Projects</a>
+      <a class="link" href="index.html.html#blog">Blog</a>
+      <a class="link" href="index.html.html#feedback">Feedback</a>
+      <a class="btn" href="index.html.html#contact">Contact</a>
+      <button id="themeToggle" class="link" aria-pressed="false">Dark Mode</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h2>Welcome to the web of <strong style="color:#ffd98a">M Haris</strong></h2>
+    <div class="typing" id="typing"></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="info">
+    <p><strong>This page is made with ❤️ by <span style="color:var(--accent)">M Haris</span></strong></p>
+    <div class="ad" id="ads-box">Ad: Learn Coding with Haris!</div>
+  </section>
+
+  <section>
+    <h2 style="color:var(--accent); margin-bottom:10px">My Best Teachers</h2>
+    <div class="grid" id="teachersGrid"></div>
+  </section>
+
+  <section>
+    <h3 style="margin-bottom:6px;color:var(--accent)">About This Page</h3>
+    <p class="desc">I made this page to thank my teachers. They help us learn, guide us, and make us better students.</p>
+  </section>
+</main>
+
+<footer>
+  <div>&copy; <span id="year"></span> <strong>M Haris</strong></div>
+  <div class="small">This page is lightweight and optimized for faster loading.</div>
+</footer>
+
+<script>
+(function(){
+  const teachers = [
+    {name:"Sir Tousef",subject:"Mathematics",qualities:"Explains every step clearly, patient, encourages practice"},
+    {name:"Sir Arsad",subject:"English",qualities:"Motivates students to speak confidently, uses creative methods"},
+    {name:"Sir Kamran Siraj",subject:"Physics",qualities:"Uses experiments, inspires curiosity"},
+    {name:"Sir Bilal",subject:"Urdu",qualities:"Explains poetry beautifully, helps writing skills"},
+    {name:"Sir Faisal",subject:"Computer",qualities:"Teaches with real examples, up to date with tech"},
+    {name:"Sir Salman Ahmad",subject:"English",qualities:"Improves writing and public speaking"},
+    {name:"Sir Adnan Nawaz",subject:"Biology",qualities:"Explains with real-life examples, makes science exciting"}
+  ];
+
+  const grid=document.getElementById('teachersGrid');
+  teachers.forEach(t=>{
+    const card=document.createElement('article');
+    card.className='card';
+    card.innerHTML=`<h3>${t.name}</h3><div class="role">${t.subject}</div><p class="desc">${t.qualities}</p><div class="tag">Best Teacher</div>`;
+    grid.appendChild(card);
+  });
+
+  const typingEl=document.getElementById('typing');
+  const typingTexts=["Learning JavaScript with fun","Building small projects","Sharing what I learn"];
+  let ti=0,ci=0,deleting=false;
+  function tick(){
+    const txt=typingTexts[ti];
+    typingEl.textContent=txt.slice(0,ci);
+    if(!deleting) ci++; else ci--;
+    if(!deleting && ci===txt.length){ deleting=true; setTimeout(tick,900);}
+    else if(deleting && ci===0){ deleting=false; ti=(ti+1)%typingTexts.length; setTimeout(tick,300);}
+    else setTimeout(tick,deleting?60:110);
+  }
+  tick();
+
+  const ads=["Ad: Learn Coding with Haris!","Ad: Subscribe to Haris's YouTube 🎥","Ad: Follow Haris on GitHub 💻","Education is the key! 📚"];
+  let adIndex=0;
+  const adsBox=document.getElementById('ads-box');
+  setInterval(()=>{adIndex=(adIndex+1)%ads.length; adsBox.style.opacity=0; setTimeout(()=>{adsBox.textContent=ads[adIndex]; adsBox.style.opacity=1;},220);},3500);
+
+  const toggle=document.querySelector('.menu-toggle');
+  const navActions=document.getElementById('navActions');
+  toggle.addEventListener('click',()=>{const is=navActions.style.display==='flex'; navActions.style.display=is?'':'flex'; toggle.setAttribute('aria-expanded',String(!is));});
+
+  const root=document.documentElement;
+  const THEME_KEY='mharis_theme_v1';
+  const themeBtn=document.getElementById('themeToggle');
+  function applyTheme(t){
+    if(t==='dark'){root.setAttribute('data-theme','dark'); themeBtn.textContent='Light Mode'; themeBtn.setAttribute('aria-pressed','true');}
+    else{root.removeAttribute('data-theme'); themeBtn.textContent='Dark Mode'; themeBtn.setAttribute('aria-pressed','false');}
+  }
+  const stored=localStorage.getItem(THEME_KEY);
+  if(stored) applyTheme(stored);
+  else{const prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches; applyTheme(prefersDark?'dark':'light');}
+  themeBtn.addEventListener('click',()=>{const isDark=root.getAttribute('data-theme')==='dark'; const next=isDark?'light':'dark'; applyTheme(next); localStorage.setItem(THEME_KEY,next);});
+  window.addEventListener('keydown',(e)=>{if(e.key.toLowerCase()==='t'&&!e.metaKey&&!e.ctrlKey&&!e.altKey) themeBtn.click();});
+
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
