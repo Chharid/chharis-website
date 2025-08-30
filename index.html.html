@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -106,29 +107,37 @@
   <!-- Preloader -->
   <div id="preloader"><div class="spinner" aria-hidden="true"></div></div>
 
-  <!-- NAV -->
-  <nav aria-label="Main navigation">
-    <div class="brand">
-      <img src="logo.png" alt="M Haris logo">
-      <div>
-        <h1>M Haris</h1>
-        <div style="font-size:12px;color:var(--accent)">Web dev • Learner • Creator</div>
+  <<!-- NAV -->
+<nav aria-label="Main navigation">
+  <div class="brand">
+    <img src="logo.png" alt="M Haris logo">
+    <div>
+      <h1>M Haris</h1>
+      <div id="userGreeting" style="font-size:12px;color:var(--accent)">
+        Web dev • Learner • Creator
       </div>
     </div>
-
-    <div style="display:flex;align-items:center;gap:12px">
-  <button class="menu-toggle" aria-expanded="false">☰</button>
-  <div class="nav-links" id="navLinks">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#tutorials">Tutorials</a>
-    <a href="#blog">Blog</a>
-    <a href="#feedback">Feedback</a>
-    <a href="#contact">Contact</a>
-    <a href="page2.html.html">Page 2</a> <!-- 🔗 Added link -->
-    <a class="cta" href="#signup">Sign Up</a>
   </div>
+
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="menu-toggle" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#tutorials">Tutorials</a>
+      <a href="#blog">Blog</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contact">Contact</a>
+      <a href="page2.html.html">Page 2</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="login.html">Login</a>
+      <a href="#" id="logoutBtn" style="display:none;color:var(--accent)">Logout</a>
+    </div>
+  </div>
+</nav>
+
+
 </div>
 
   </nav>
@@ -162,19 +171,55 @@
       </div>
 
       <div style="margin-top:18px">
-        <h4>Skills</h4>
-        <div class="skill"><div style="display:flex;justify-content:space-between"><strong>HTML & CSS</strong><span class="muted">80%</span></div><div class="bar"><div class="fill" data-value="80"></div></div></div>
-        <div class="skill"><div style="display:flex;justify-content:space-between"><strong>JavaScript</strong><span class="muted">60%</span></div><div class="bar"><div class="fill" data-value="60"></div></div></div>
-        <div class="skill"><div style="display:flex;justify-content:space-between"><strong>Animation / UI</strong><span class="muted">55%</span></div><div class="bar"><div class="fill" data-value="55"></div></div></div>
+  <h4>Skills</h4>
+
+  <div class="skill" title="Expert in HTML & CSS">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="display:flex;align-items:center;gap:6px">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="HTML Icon" style="width:20px;height:20px">
+        <strong>HTML & CSS</strong>
       </div>
-    </section>
+      <span class="muted" id="htmlPerc">0%</span>
+    </div>
+    <div class="bar">
+      <div class="fill" data-value="80" style="background:linear-gradient(90deg,#f7df1e,#ffd773)"></div>
+    </div>
+  </div>
+
+  <div class="skill" title="Intermediate JavaScript skills">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="display:flex;align-items:center;gap:6px">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS Icon" style="width:20px;height:20px">
+        <strong>JavaScript</strong>
+      </div>
+      <span class="muted" id="jsPerc">0%</span>
+    </div>
+    <div class="bar">
+      <div class="fill" data-value="60" style="background:linear-gradient(90deg,#f0db4f,#e5c100)"></div>
+    </div>
+  </div>
+
+  <div class="skill" title="Learning Animation & UI">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="display:flex;align-items:center;gap:6px">
+        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="UI Icon" style="width:20px;height:20px">
+        <strong>Animation / UI</strong>
+      </div>
+      <span class="muted" id="uiPerc">0%</span>
+    </div>
+    <div class="bar">
+      <div class="fill" data-value="55" style="background:linear-gradient(90deg,#ff6a00,#ffb347)"></div>
+    </div>
+  </div>
+</div>
+
 
     <!-- PROJECTS -->
     <section id="projects">
       <h3>Projects</h3>
       <div class="grid">
         <article class="card project">
-          <img src="https://images.unsplash.com/photo-1526378725402-5aef39a1d3ff?auto=format&fit=crop&w=800&q=60" alt="project 1">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=60" alt="Project 1">
           <div>
             <h4>Portfolio v1</h4>
             <p class="muted">A single-page portfolio with smooth scroll and light/dark theme. Built as a learning exercise.</p>
@@ -324,7 +369,7 @@
     const fills = $$('.fill');
     const observer = new IntersectionObserver(entries=>{
       entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const val=el.dataset.value;el.style.width=val+'%';observer.unobserve(el)}}),{threshold:0.4}
-    );
+   ;
     fills.forEach(f=>observer.observe(f));
 
     // LocalStorage-based feedback system
@@ -382,6 +427,42 @@
     if('serviceWorker' in navigator){
       // navigator.serviceWorker.register('/sw.js').catch(()=>{});
     }
+    // ---------------- LOGIN / SIGNUP ----------------
+  const loginLink = $('#loginLink');
+  const signupLink = $('#signupLink');
+  const logoutBtn = $('#logoutBtn');
+  const userGreeting = $('#userGreeting');
+
+  function updateUserUI(){
+    const user = localStorage.getItem('mharis_user');
+    if(user){
+      userGreeting.textContent = `Hello, ${user} 👋`;
+      loginLink.style.display='none';
+      signupLink.style.display='none';
+      logoutBtn.style.display='inline';
+    } else {
+      userGreeting.textContent = 'Web dev • Learner • Creator';
+      loginLink.style.display='inline';
+      signupLink.style.display='inline';
+      logoutBtn.style.display='none';
+    }
+  }
+  updateUserUI();
+
+  loginLink.addEventListener('click',()=>{
+    const name = prompt('Enter your username to login:');
+    if(name) { localStorage.setItem('mharis_user', name); updateUserUI(); alert('Logged in as '+name); }
+  });
+
+  signupLink.addEventListener('click',()=>{
+    const name = prompt('Enter your username to sign up:');
+    if(name) { localStorage.setItem('mharis_user', name); updateUserUI(); alert('Signed up and logged in as '+name); }
+  });
+
+  logoutBtn.addEventListener('click',()=>{
+    if(confirm('Do you want to logout?')) { localStorage.removeItem('mharis_user'); updateUserUI(); alert('Logged out'); }
+  });
+
 
   </script>
 </body>
