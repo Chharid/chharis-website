@@ -1,173 +1,362 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="description" content="Thanking my best teachers. Learn coding, web development, and more with M Haris.">
-<meta name="keywords" content="M Haris, teachers, coding, web development, JavaScript, learning">
-<meta name="author" content="M Haris">
-<meta name="theme-color" content="#cc6600">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>M Haris — Page 2 (Ultimate Hub)</title>
+  <meta name="description" content="M Haris — advanced hub: portfolio, teaching, learning resources, timeline, gallery, FAQ and contact." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root{
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #111;
+      --muted: #6b7280;
+      --accent: #00d4ff;
+      --accent-dark: #00b7e6;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 12px;
+      --shadow: 0 8px 30px rgba(16,24,40,0.06);
+      --nav: rgba(10,10,10,0.85);
+      --maxw: 1200px;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial;
+    }
+    [data-theme="dark"]{
+      --bg:#07070a;
+      --card:#0c0c10;
+      --text:#e6eef6;
+      --muted:#9aa4b2;
+      --accent:#00d4ff;
+      --glass: rgba(255,255,255,0.03);
+      --nav: rgba(4,4,6,0.9);
+      --shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="M Haris — Teachers">
-<meta property="og:description" content="Thanking my best teachers. Learn coding, web development, and more with M Haris.">
-<meta property="og:image" content="logo.png">
-<meta property="og:url" content="https://yourwebsite.com">
+    /* NAV */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:1200;
+      width:100%;
+      backdrop-filter: blur(6px);
+      background:linear-gradient(180deg,var(--nav), rgba(0,0,0,0));
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:10px 18px;
+      box-shadow:var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:46px;height:46px;border-radius:10px;object-fit:cover;border:3px solid var(--accent)}
+    .brand h1{font-size:16px;color:var(--text);margin:0}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .nav-links{display:flex;gap:10px;align-items:center}
+    .nav-links a, .nav-links button{
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+      padding:8px 10px;
+      border-radius:8px;
+      background:none;
+      border:0;
+      cursor:pointer;
+    }
+    .nav-links a:hover{background:var(--glass)}
+    .menu-btn{display:none;font-size:22px;background:none;border:0;cursor:pointer}
+    .theme-btn{padding:8px 10px;border-radius:8px;border:0;cursor:pointer;background:var(--accent);color:#000;font-weight:800}
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="M Haris — Teachers">
-<meta name="twitter:description" content="Thanking my best teachers. Learn coding, web development, and more with M Haris.">
-<meta name="twitter:image" content="logo.png">
+    /* Container */
+    .wrap{max-width:var(--maxw);margin:26px auto;padding:0 18px;width:100%;flex:1}
 
-<title>M Haris — Teachers</title>
-<link rel="icon" href="logo.png" />
-<style>
-:root{
-  --bg:#f2f2f2; --card:#fff; --text:#222; --accent:#cc6600; --nav:#323330; --accent-contrast:#f7df1e;
-}
-[data-theme="dark"]{
-  --bg:#070707; --card:#0f0f10; --text:#e6e6e6; --nav:#0b0b0b; --accent-contrast:#f7df1e;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:var(--bg); color:var(--text); line-height:1.45; display:flex; flex-direction:column; min-height:100vh;
-}
-nav{
-  display:flex; justify-content:space-between; align-items:center; padding:12px 18px;
-  position:sticky; top:0; background:var(--nav); color:var(--accent-contrast); z-index:1200;
-}
-.brand{
-  display:flex; align-items:center; gap:12px;
-}
-.brand img{
-  width:46px; height:46px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.12);
-}
-.brand h1{font-size:16px; color:#fff; margin:0;}
-.nav-links{
-  display:flex; gap:10px; align-items:center;
-}
-.nav-links a, .nav-links button{
-  color:var(--accent-contrast);
-  text-decoration:none;
-  font-weight:700;
-  padding:8px 10px;
-  border-radius:8px;
-  background:none;
-  border:none;
-  cursor:pointer;
-}
-.nav-links a:hover, .nav-links button:hover{opacity:0.92;}
-.menu-toggle{display:none; font-size:22px; color:var(--accent-contrast); background:none; border:0; cursor:pointer;}
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:20px;
+      align-items:center;
+      margin-bottom:24px;
+    }
+    .hero-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .hero h2{font-size:28px;margin-bottom:8px}
+    .hero p{color:var(--muted);margin-bottom:14px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:800}
+    .btn-primary{background:var(--accent);color:#000}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
 
-.hero{
-  background-image: linear-gradient(180deg, rgba(0,0,0,0.36), rgba(0,0,0,0.18)), url("https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1600&q=60");
-  background-size:cover; background-position:center; min-height:260px; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; padding:40px 20px;
-}
-.hero-inner{max-width:980px;}
-.hero h2{font-size:28px; margin-bottom:8px;}
-.typing{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:#ffd98a; font-weight:700; margin-top:6px; letter-spacing:0.6px;}
+    /* Quick stats */
+    .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .stat{background:linear-gradient(180deg,var(--glass),transparent);padding:12px;border-radius:10px;min-width:120px;text-align:center}
+    .stat h3{margin:0;font-size:20px}
+    .stat p{color:var(--muted);margin-top:6px;font-weight:700}
 
-.container{max-width:1100px; margin:28px auto; padding:0 18px; flex:1; width:100%;}
-.info{background:var(--card); border-radius:12px; padding:14px 16px; box-shadow:0 8px 30px rgba(0,0,0,0.04); display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:18px;}
-.info p{margin:0; font-weight:700; color:var(--text);}
-.ad{font-weight:800; color:var(--accent); background:linear-gradient(90deg, rgba(255,230,200,0.25), rgba(255,255,255,0.02)); padding:8px 12px; border-radius:10px;}
-.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:16px 0 36px;}
-.card{background:var(--card); border-radius:12px; padding:14px; box-shadow:0 8px 20px rgba(10,10,10,0.06); transition:transform .25s ease,box-shadow .25s ease; display:flex; flex-direction:column; gap:8px; min-height:120px;}
-.card:hover{transform:translateY(-6px); box-shadow:0 16px 40px rgba(0,0,0,0.08);}
-.card h3{margin:0; font-size:18px; color:var(--accent);}
-.role{font-weight:800; color:var(--text);}
-.desc{color:#666; font-weight:700; font-size:14px;}
-[data-theme="dark"] .desc{color:#bfbfbf;}
-.tag{margin-top:auto; align-self:flex-start; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,0.04); font-weight:800; font-size:13px;}
-footer{padding:18px; text-align:center; color:var(--text); font-weight:700;}
-.small{font-size:13px; color:rgba(0,0,0,0.5);}
-[data-theme="dark"] .small{color:rgba(255,255,255,0.6);}
+    /* Two-column grid */
+    .grid-2{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:start}
 
-/* Mobile menu */
-@media(max-width:720px){
-  .menu-toggle{display:block;}
-  .nav-links{
-    flex-direction:column;
-    gap:8px;
-    background:var(--nav);
-    padding:10px;
-    border-radius:10px;
-    max-height:0;
-    overflow:hidden;
-    transition:max-height 0.4s ease;
-    width:100%;
-  }
-  .nav-links.show{max-height:500px;}
-  .nav-links a, .nav-links button{width:100%; text-align:left;}
-}
-</style>
+    /* Cards grid */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+
+    /* Sections */
+    section{margin:20px 0}
+    section h2{font-size:20px;margin-bottom:12px;color:var(--accent)}
+    .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+
+    /* Teachers list */
+    .teachers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .teacher{padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);background:linear-gradient(180deg,transparent,var(--glass))}
+
+    /* Portfolio gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px;display:block;transition:transform .25s ease}
+    .gallery img:hover{transform:scale(1.05)}
+
+    /* Timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .timeline-item{display:flex;gap:12px;align-items:flex-start}
+    .timeline-item .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px;flex:0 0 12px}
+    .timeline-item .body{background:var(--card);padding:12px;border-radius:8px;box-shadow:var(--shadow);flex:1}
+
+    /* Skills */
+    .skill{margin-bottom:10px}
+    .skill .meta{display:flex;justify-content:space-between;font-weight:800;color:var(--muted);margin-bottom:6px}
+    .bar{height:12px;background:rgba(0,0,0,0.06);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-dark));border-radius:999px;transition:width 1.2s ease}
+
+    /* Counters */
+    .counters{display:flex;gap:12px;flex-wrap:wrap}
+    .counter{padding:18px;border-radius:10px;text-align:center;min-width:120px;background:linear-gradient(180deg,transparent,var(--glass))}
+
+    /* FAQ */
+    .faq-item{border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.05)}
+    .faq-q{padding:12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:800}
+    .faq-a{padding:12px;border-top:1px solid rgba(0,0,0,0.04);display:none;color:var(--muted)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+    .contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);margin-bottom:10px;background:transparent;color:var(--text)}
+    .contact-form button{width:100%;padding:10px;border-radius:8px;border:0;background:var(--accent);font-weight:900;color:#000}
+
+    /* Footer */
+    footer{margin-top:24px;padding:18px;text-align:center;color:var(--muted);font-weight:700}
+
+    /* Responsive */
+    @media(max-width:1100px){.hero,.grid-2{grid-template-columns:1fr}}
+    @media(max-width:720px){
+      .menu-btn{display:block}
+      .nav-links{display:none;position:fixed;right:12px;top:60px;background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow);flex-direction:column}
+      .nav-links.show{display:flex}
+      .hero{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .gallery img{height:100px}
+    }
+  </style>
 </head>
 <body>
 
 <nav aria-label="Main navigation">
-  <div class="brand">
+  <div class="brand" aria-hidden="false">
     <img src="logo.png" alt="M Haris logo">
     <div>
       <h1>M Haris</h1>
-      <div id="userGreeting" style="font-size:12px;color:var(--accent)">Web dev • Learner • Creator</div>
+      <div style="font-size:12px;color:var(--accent)">Web dev • Learner • Creator</div>
     </div>
   </div>
 
-  <div style="display:flex;align-items:center;gap:12px">
-    <button class="menu-toggle" aria-expanded="false">☰</button>
-    <div class="nav-links" id="navLinks">
+  <div class="nav-actions">
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Open menu">☰</button>
+    <div class="nav-links" id="navLinks" role="menu" aria-hidden="true">
       <a href="index.html.html">Home</a>
-      <a href="#teacher">Teacher</a>
-      <a href="#projects">Projects</a>
-      <a href="#tutorials">Tutorials</a>
-      <a href="#blog">Blog</a>
-      <a href="#feedback">Feedback</a>
-      <a href="#contact">Contact</a>
       <a href="page3.html.html">Page 3</a>
-      <a href="page3.html.html">About</a>
+      <a href="#teachers">Teachers</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
       <a href="signup.html">Sign Up</a>
       <a href="login.html">Login</a>
-      <a href="#" id="logoutBtn" style="display:none;color:var(--accent)">Logout</a>
-      <button id="themeToggle" aria-pressed="false">Dark Mode</button>
     </div>
+    <button id="themeToggle" class="theme-btn" aria-pressed="false">Dark Mode</button>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-inner">
-    <h2>Welcome to the web of <strong style="color:#ffd98a">M Haris</strong></h2>
-    <div class="typing" id="typing"></div>
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-card">
+      <h2>Page 2 — The Ultimate Hub</h2>
+      <p>Everything in one place: teaching, portfolio, learning resources, timeline, gallery and contact. Use it, customize it, and make it yours.</p>
+
+      <div class="cta-row">
+        <button class="btn btn-primary" id="jumpPortfolio">Explore Portfolio</button>
+        <a class="btn btn-ghost" href="index.html.html">Back to Main Page</a>
+      </div>
+
+      <div class="stats" aria-hidden="false">
+        <div class="stat"><h3 id="statProjects">0</h3><p>Projects</p></div>
+        <div class="stat"><h3 id="statHours">0</h3><p>Hours of Learning</p></div>
+        <div class="stat"><h3 id="statStudents">0</h3><p>Students Helped</p></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <h3>Quick Links</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+          <a href="#teachers" class="btn">Teachers</a>
+          <a href="#timeline" class="btn">Timeline</a>
+          <a href="#faq" class="btn">FAQ</a>
+        </div>
+      </div>
+    </aside>
   </div>
-</header>
 
-<main class="container">
-  <section class="info">
-    <p><strong>This page is made with ❤️ by <span style="color:var(--accent)">M Haris</span></strong></p>
-    <div class="ad" id="ads-box">Ad: Learn Coding with Haris!</div>
+  <!-- TWO COLUMN: Teachers + Portfolio -->
+  <div class="grid-2">
+    <section id="teachers" class="card">
+      <h2>My Best Teachers</h2>
+      <div class="teachers" id="teachersList" aria-live="polite"></div>
+    </section>
+
+    <aside class="card" id="portfolio" aria-labelledby="portfolio-heading">
+      <h2 id="portfolio-heading">Portfolio Highlights</h2>
+      <div class="gallery" id="gallery">
+        <img src="https://picsum.photos/320/220?1" alt="Project 1">
+        <img src="https://picsum.photos/320/220?2" alt="Project 2">
+        <img src="https://picsum.photos/320/220?3" alt="Project 3">
+        <img src="https://picsum.photos/320/220?4" alt="Project 4">
+      </div>
+      <p style="color:var(--muted);margin-top:12px">Click an image to open full size in a new tab.</p>
+    </aside>
+  </div>
+
+  <!-- Timeline -->
+  <section id="timeline" class="card">
+    <h2>Timeline & Key Moments</h2>
+    <div class="timeline" id="timelineList">
+      <!-- JS will populate -->
+    </div>
   </section>
 
-  <section id="teacher">
-    <h2 style="color:var(--accent); margin-bottom:10px">My Best Teachers</h2>
-    <div class="grid" id="teachersGrid"></div>
+  <!-- Skills + Counters -->
+  <div class="grid-2">
+    <section class="card">
+      <h2>Skills & Progress</h2>
+      <div class="skill">
+        <div class="meta"><span>HTML & CSS</span><span>95%</span></div>
+        <div class="bar"><i data-width="95%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="meta"><span>JavaScript</span><span>86%</span></div>
+        <div class="bar"><i data-width="86%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="meta"><span>Design & UI</span><span>78%</span></div>
+        <div class="bar"><i data-width="78%"></i></div>
+      </div>
+      <div class="skill">
+        <div class="meta"><span>Animation</span><span>72%</span></div>
+        <div class="bar"><i data-width="72%"></i></div>
+      </div>
+    </section>
+
+    <aside class="card">
+      <h2>Interactive Stats</h2>
+      <div class="counters" id="countersWrap">
+        <div class="counter"><div style="font-size:22px;font-weight:900" data-target="120">0</div><div style="color:var(--muted);margin-top:6px">Projects</div></div>
+        <div class="counter"><div style="font-size:22px;font-weight:900" data-target="540">0</div><div style="color:var(--muted);margin-top:6px">Learning Hours</div></div>
+        <div class="counter"><div style="font-size:22px;font-weight:900" data-target="900">0</div><div style="color:var(--muted);margin-top:6px">Students</div></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Blog / Tips -->
+  <section class="card">
+    <h2>Latest Blog / Tips</h2>
+    <div class="cards" aria-live="polite">
+      <article class="card"><h3>How to learn faster</h3><p style="color:var(--muted)">Small projects, daily practice and review make a big difference.</p></article>
+      <article class="card"><h3>Optimize animations</h3><p style="color:var(--muted)">Use transform, opacity and avoid layout thrash for smoothness.</p></article>
+      <article class="card"><h3>Portfolio tips</h3><p style="color:var(--muted)">Show 3-6 quality projects and explain what you learned.</p></article>
+    </div>
   </section>
 
-  <section>
-    <h3 style="margin-bottom:6px;color:var(--accent)">About This Page</h3>
-    <p class="desc">I made this page to thank my teachers. They help us learn, guide us, and make us better students.</p>
+  <!-- FAQ -->
+  <section id="faq" class="card">
+    <h2>FAQ</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">How can I contact you?<span aria-hidden="true">+</span></div>
+        <div class="faq-a">Use the contact form below or email me at example@mail.com.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I request a tutorial?<span aria-hidden="true">+</span></div>
+        <div class="faq-a">Yes. Send your request using the feedback form. I check messages regularly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you accept collaboration?<span aria-hidden="true">+</span></div>
+        <div class="faq-a">Yes. If your project fits my skills we can discuss it over email or chat.</div>
+      </div>
+    </div>
   </section>
+
+  <!-- Contact -->
+  <section id="contact" class="card">
+    <h2>Contact & Feedback</h2>
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="_replyto" placeholder="Your email" required>
+        <input type="text" name="subject" placeholder="Subject">
+        <textarea name="message" rows="6" placeholder="Message"></textarea>
+        <button type="submit">Send Message</button>
+        <p id="contactSuccess" style="display:none;color:green;margin-top:8px">Thanks. Message sent.</p>
+      </form>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="card">
+          <h3>Location</h3>
+          <p style="color:var(--muted)">Karachi, Pakistan</p>
+        </div>
+        <div class="card">
+          <h3>Social</h3>
+          <p style="color:var(--muted)"><a href="#" style="color:var(--accent)">Twitter</a> • <a href="#" style="color:var(--accent)">GitHub</a></p>
+        </div>
+        <div class="card">
+          <h3>Subscribe</h3>
+          <p style="color:var(--muted)">Enter email on the top of this page to get updates (you can add a subscription box later).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>&copy; <span id="year"></span> <strong>M Haris</strong>. Built with focus on learning and sharing.</div>
+  </footer>
+
 </main>
-
-<footer>
-  <div>&copy; <span id="year"></span> <strong>M Haris</strong></div>
-  <div class="small">This page is lightweight and optimized for faster loading.</div>
-</footer>
 
 <script>
 (function(){
+  // Basic data (pulled from your other page)
   const teachers = [
     {name:"Sir Tousef",subject:"Mathematics",qualities:"Explains every step clearly, patient, encourages practice"},
     {name:"Sir Arsad",subject:"English",qualities:"Motivates students to speak confidently, uses creative methods"},
@@ -178,69 +367,155 @@ footer{padding:18px; text-align:center; color:var(--text); font-weight:700;}
     {name:"Sir Adnan Nawaz",subject:"Biology",qualities:"Explains with real-life examples, makes science exciting"}
   ];
 
-  const grid=document.getElementById('teachersGrid');
-  teachers.forEach(t=>{
-    const card=document.createElement('article');
-    card.className='card';
-    card.innerHTML=`<h3>${t.name}</h3><div class="role">${t.subject}</div><p class="desc">${t.qualities}</p><div class="tag">Best Teacher</div>`;
-    grid.appendChild(card);
+  // Populate teachers
+  const teachersList = document.getElementById('teachersList');
+  teachers.forEach(t => {
+    const el = document.createElement('article');
+    el.className = 'teacher';
+    el.innerHTML = `<h3 style="margin:0">${t.name}</h3><div style="color:var(--muted);font-weight:800;margin:6px 0">${t.subject}</div><p style="color:var(--muted)}">${t.qualities}</p>`;
+    teachersList.appendChild(el);
   });
 
-  // Typing effect
-  const typingEl=document.getElementById('typing');
-  const typingTexts=["Learning JavaScript with fun","Building small projects","Sharing what I learn"];
-  let ti=0,ci=0,deleting=false;
-  function tick(){
-    const txt=typingTexts[ti];
-    typingEl.textContent=txt.slice(0,ci);
-    if(!deleting) ci++; else ci--;
-    if(!deleting && ci===txt.length){ deleting=true; setTimeout(tick,900);}
-    else if(deleting && ci===0){ deleting=false; ti=(ti+1)%typingTexts.length; setTimeout(tick,300);}
-    else setTimeout(tick,deleting?60:110);
+  // Timeline sample
+  const timeline = [
+    {year:'2025',title:'Started Learning Web',desc:'First HTML pages and small projects.'},
+    {year:'2025',title:'Built First Portfolio',desc:'Learned responsive layouts and CSS.'},
+    {year:'2025',title:'Teaching & Sharing',desc:'Started helping classmates and making tutorials.'},
+    {year:'2025',title:'Advanced Hub',desc:'This page2: a combined resource and portfolio.'}
+  ];
+  const timelineList = document.getElementById('timelineList');
+  timeline.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'timeline-item';
+    row.innerHTML = `<div class="dot" aria-hidden="true"></div><div class="body"><strong>${item.year} — ${item.title}</strong><div style="color:var(--muted);margin-top:6px">${item.desc}</div></div>`;
+    timelineList.appendChild(row);
+  });
+
+  // Gallery click -> open
+  document.querySelectorAll('#gallery img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => window.open(img.src, '_blank'));
+  });
+
+  // Progress bars animation on view
+  function animateBars(){
+    document.querySelectorAll('.bar > i').forEach(i => {
+      const w = i.getAttribute('data-width') || '60%';
+      i.style.width = '0';
+      setTimeout(()=> i.style.width = w, 120);
+    });
   }
-  tick();
+  animateBars();
 
-  // Rotating ads
-  const ads=["Ad: Learn Coding with Haris!","Ad: Subscribe to Haris's YouTube 🎥","Ad: Follow Haris on GitHub 💻","Education is the key! 📚"];
-  let adIndex=0;
-  const adsBox=document.getElementById('ads-box');
-  setInterval(()=>{
-    adIndex=(adIndex+1)%ads.length;
-    adsBox.style.opacity=0;
-    setTimeout(()=>{adsBox.textContent=ads[adIndex]; adsBox.style.opacity=1;},220);
-  },3500);
+  // Counters
+  function runCounters(){
+    document.querySelectorAll('[data-target]').forEach(el => {
+      const target = +el.getAttribute('data-target');
+      let current = 0;
+      const step = Math.ceil(target / 120);
+      const id = setInterval(() => {
+        current += step;
+        if (current >= target){ current = target; clearInterval(id); }
+        el.textContent = current;
+      }, 9);
+    });
+  }
+  // Stats in hero
+  function animateHeroStats(){
+    document.getElementById('statProjects').textContent = 120;
+    document.getElementById('statHours').textContent = 540;
+    document.getElementById('statStudents').textContent = 900;
+  }
 
-  // Mobile menu toggle
-  const toggle=document.querySelector('.menu-toggle');
-  const navLinks=document.getElementById('navLinks');
-  toggle.addEventListener('click',()=>{
-    navLinks.classList.toggle('show');
-    const expanded = navLinks.classList.contains('show');
-    toggle.setAttribute('aria-expanded', expanded);
+  // Run counters when visible
+  let countersRun = false;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        if(!countersRun){ runCounters(); countersRun = true; }
+        animateHeroStats();
+      }
+    });
+  }, {threshold: 0.2});
+  obs.observe(document.getElementById('countersWrap'));
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const open = a.style.display === 'block';
+      document.querySelectorAll('.faq-a').forEach(n => n.style.display = 'none');
+      a.style.display = open ? 'none' : 'block';
+    });
   });
 
-  // Dark/Light mode
-  const root=document.documentElement;
-  const THEME_KEY='mharis_theme_v1';
-  const themeBtn=document.getElementById('themeToggle');
+  // Contact form using Fetch (Formspree)
+  const contactForm = document.getElementById('contactForm');
+  const contactSuccess = document.getElementById('contactSuccess');
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const action = contactForm.action;
+    const data = new FormData(contactForm);
+    fetch(action, { method:'POST', body: data, headers:{'Accept':'application/json'} })
+      .then(res => {
+        if(res.ok){ contactSuccess.style.display='block'; contactForm.reset(); setTimeout(()=> contactSuccess.style.display='none',3500); }
+        else { alert('There was a problem sending your message.'); }
+      }).catch(()=> alert('Network error. Try again.'));
+  });
+
+  // Theme toggle (dark/light)
+  const themeBtn = document.getElementById('themeToggle');
+  const THEME_KEY = 'mharis_theme_v2';
   function applyTheme(t){
-    if(t==='dark'){root.setAttribute('data-theme','dark'); themeBtn.textContent='Light Mode'; themeBtn.setAttribute('aria-pressed','true');}
-    else{root.removeAttribute('data-theme'); themeBtn.textContent='Dark Mode'; themeBtn.setAttribute('aria-pressed','false');}
+    if(t==='dark'){ document.documentElement.setAttribute('data-theme','dark'); themeBtn.textContent='Light Mode'; themeBtn.setAttribute('aria-pressed','true'); }
+    else { document.documentElement.removeAttribute('data-theme'); themeBtn.textContent='Dark Mode'; themeBtn.setAttribute('aria-pressed','false'); }
   }
-  const stored=localStorage.getItem(THEME_KEY);
-  if(stored) applyTheme(stored);
-  else{const prefersDark=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; applyTheme(prefersDark?'dark':'light');}
-  themeBtn.addEventListener('click',()=>{
-    const isDark=root.getAttribute('data-theme')==='dark';
-    const next=isDark?'light':'dark';
-    applyTheme(next); 
-    localStorage.setItem(THEME_KEY,next);
+  const saved = localStorage.getItem(THEME_KEY);
+  if(saved) applyTheme(saved);
+  else applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  themeBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem(THEME_KEY, next);
   });
-  window.addEventListener('keydown',(e)=>{if(e.key.toLowerCase()==='t'&&!e.metaKey&&!e.ctrlKey&&!e.altKey) themeBtn.click();});
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const show = navLinks.classList.toggle('show');
+    navLinks.setAttribute('aria-hidden', String(!show));
+    menuBtn.setAttribute('aria-expanded', String(show));
+  });
+
+  // Jump to portfolio
+  document.getElementById('jumpPortfolio').addEventListener('click', ()=> {
+    document.getElementById('portfolio').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // Stats animation for hero (basic)
+  animateHeroStats();
 
   // Dynamic year
-  document.getElementById('year').textContent=new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Small accessibility improvement: keyboard FAQ navigation
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.setAttribute('tabindex','0');
+    q.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key===' ') q.click(); });
+  });
+
+  // Animate counters when gallery enters view
+  const galleryObserver = new IntersectionObserver((entries) => {
+    entries.forEach(en => { if(en.isIntersecting){ runCounters(); galleryObserver.disconnect(); } });
+  }, {threshold:0.3});
+  galleryObserver.observe(document.getElementById('gallery'));
+
 })();
 </script>
+
 </body>
 </html>

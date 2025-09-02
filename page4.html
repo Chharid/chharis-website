@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Future Hub — Page 4 (Innovation City)</title>
+  <meta name="description" content="Future & Innovation Hub — Shaping realistic futures with tech, design and education.">
+  <link rel="icon" href="logo.png">
+
+  <style>
+    /* ---------- Base & Theme (compatible with site) ---------- */
+    :root{
+      --bg-light:#f6f8fb; --card-light:#ffffff; --text-light:#0b1320; --muted-light:#6b7280;
+      --bg-dark:#07070a; --card-dark:#0c0c10; --text-dark:#e6eef6; --muted-dark:#9aa4b2;
+      --accent:#00d4ff; --accent-2:#00ffe7; --glass: rgba(255,255,255,0.06);
+      --radius:14px; --maxw:1200px; --shadow:0 12px 40px rgba(3,10,18,0.12);
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial;
+    }
+    [data-theme="dark"]{
+      --bg:var(--bg-dark); --card:var(--card-dark); --text:var(--text-dark); --muted:var(--muted-dark);
+      --nav-bg: rgba(4,4,6,0.9); --glass: rgba(255,255,255,0.03);
+    }
+    :not([data-theme="dark"]){
+      --bg:var(--bg-light); --card:var(--card-light); --text:var(--text-light); --muted:var(--muted-light);
+      --nav-bg: rgba(255,255,255,0.8);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; display:flex; flex-direction:column; min-height:100vh;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:0 18px;width:100%}
+
+    /* ---------- Navbar (connected to site) ---------- */
+    nav{
+      position:sticky; top:0; z-index:1400; display:flex; align-items:center; justify-content:space-between;
+      gap:12px;padding:12px 18px; backdrop-filter: blur(6px); background:var(--nav-bg);
+      box-shadow:var(--shadow);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:46px;height:46px;border-radius:10px;object-fit:cover;border:3px solid var(--accent)}
+    .brand h1{font-size:16px;margin:0}
+    .nav-links{display:flex;gap:10px;align-items:center}
+    .nav-links a, .nav-links button{padding:8px 10px;border-radius:8px;font-weight:700;background:transparent;border:0;cursor:pointer}
+    .nav-links a:hover{background:var(--glass)}
+    .menu-btn{display:none}
+    .theme-btn{background:var(--accent);border-radius:8px;padding:8px 10px;font-weight:900;border:0;cursor:pointer}
+
+    /* ---------- Hero (big, animated) ---------- */
+    .hero{
+      min-height:520px; display:flex; align-items:center; gap:24px; padding:48px 0; position:relative; overflow:hidden;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(0,212,255,0.06), transparent 8%),
+        radial-gradient(900px 400px at 90% 80%, rgba(0,255,231,0.04), transparent 6%),
+        linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+      border-radius:18px;
+    }
+    .hero-left{flex:1; padding:40px; border-radius:12px}
+    .hero-card{background:var(--card);border-radius:14px;padding:28px;box-shadow:var(--shadow)}
+    .hero h1{font-size:36px;color:var(--accent);margin-bottom:8px;letter-spacing:0.2px}
+    .hero p{color:var(--muted);margin-bottom:18px}
+    .type {font-weight:900;color:var(--accent-2);font-family:ui-monospace, SFMono-Regular, Menlo, monospace}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:900}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#000}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
+
+    /* Animated skyline (decor) */
+    .skyline{position:absolute;right:-60px;bottom:-20px;width:520px;height:300px;opacity:0.12;filter:blur(8px)}
+    .glow{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+
+    /* ---------- Sections ---------- */
+    section{padding:64px 0}
+    section h2{font-size:20px;color:var(--accent);text-align:center;margin-bottom:18px}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+
+    /* ---------- Grid utilities ---------- */
+    .grid{display:grid;gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:1fr 420px}
+    .grid-auto{grid-auto-rows:minmax(80px,auto)}
+    @media(min-width:1200px){ .grid-3{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:1199px){ .grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))} }
+    @media(max-width:900px){ .grid-2{grid-template-columns:1fr} .hero{flex-direction:column;padding:28px} .menu-btn{display:block} .nav-links{display:none} }
+
+    /* ---------- Timeline (scrolling) ---------- */
+    .timeline{position:relative;margin-top:12px}
+    .timeline-track{height:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px;margin:20px 0;position:relative;overflow:hidden}
+    .timeline-points{display:flex;gap:8px;justify-content:space-between;align-items:center}
+    .timeline-point{width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid rgba(255,255,255,0.06);box-shadow:0 6px 20px rgba(0,0,0,0.12);transform:translateY(-6px)}
+    .timeline-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0}
+
+    /* ---------- Flip cards (knowledge) ---------- */
+    .flip-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .flip{perspective:1200px}
+    .flip-inner{position:relative;transition:transform 0.7s;transform-style:preserve-3d;border-radius:12px}
+    .flip-card{position:relative;backface-visibility:hidden;border-radius:12px;min-height:160px;padding:18px}
+    .flip-front{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03)}
+    .flip-back{position:absolute;inset:0;transform:rotateY(180deg);background:linear-gradient(180deg,var(--accent-2),rgba(0,0,0,0.08));color:#001;display:flex;align-items:center;justify-content:center;padding:18px}
+    .flip:hover .flip-inner{transform:rotateY(180deg)}
+
+    /* ---------- Gallery / Map placeholder ---------- */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:10px;transition:transform .25s}
+    .gallery img:hover{transform:scale(1.03);cursor:zoom-in}
+    .map-placeholder{height:320px;border-radius:12px;background:linear-gradient(180deg,rgba(0,0,0,0.06),transparent);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:900}
+
+    /* ---------- AI Showcase & Roadmap ---------- */
+    .showcase{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .robot{display:flex;flex-direction:column;gap:8px;align-items:center;padding:18px;border-radius:12px}
+    .robot svg{width:100%;max-width:160px}
+    .roadmap{display:flex;flex-direction:column;gap:10px}
+    .road-step{display:flex;gap:12px;align-items:flex-start}
+
+    /* ---------- Quotes carousel ---------- */
+    .quotes{position:relative;overflow:hidden;border-radius:12px}
+    .quotes-track{display:flex;gap:12px;transition:transform .6s ease}
+    .quote{min-width:320px;padding:20px;background:var(--card)}
+
+    /* ---------- Parallax section ---------- */
+    .parallax{
+      height:320px;background-image:url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1600&q=60');
+      background-attachment:fixed;background-size:cover;background-position:center;border-radius:12px;margin:24px 0;box-shadow:var(--shadow)
+    }
+
+    /* ---------- Counters ---------- */
+    .counters{display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between}
+    .counter{flex:1;min-width:140px;padding:18px;border-radius:12px;background:var(--card);text-align:center;box-shadow:var(--shadow)}
+    .counter .big{font-size:28px;font-weight:900;color:var(--accent)}
+
+    /* ---------- FAQ ---------- */
+    .faq details{background:var(--card);padding:14px;border-radius:10px;margin:8px 0}
+    .faq summary{font-weight:900;color:var(--accent);cursor:pointer}
+
+    /* ---------- Contact ---------- */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+    .contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text);margin-bottom:10px}
+    .contact-btn{padding:12px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));font-weight:900;cursor:pointer}
+
+    /* ---------- Footer ---------- */
+    footer{padding:30px 0;text-align:center;color:var(--muted)}
+
+    /* ---------- Responsive tweaks ---------- */
+    @media(max-width:980px){
+      .showcase{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav aria-label="Main navigation">
+    <div class="brand">
+      <img src="logo.png" alt="M Haris logo">
+      <div>
+        <h1>M Haris</h1>
+        <div style="font-size:12px;color:var(--accent)">Future • Learn • Build</div>
+      </div>
+    </div>
+
+    <div class="nav-links" role="navigation">
+      <a href="index.html.html">Home</a>
+      <a href="page2.html.html">Hub</a>
+      <a href="page3.html.html">Creative</a>
+      <a href="page4.html.html" aria-current="page">Future</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="login.html">Login</a>
+      <button id="themeToggle" class="theme-btn" aria-pressed="false">Dark Mode</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <main class="wrap" id="top">
+    <section class="hero" aria-label="Future hero">
+      <div class="hero-left">
+        <div class="hero-card">
+          <h1>Shaping Tomorrow — Real, Practical, Human</h1>
+          <p>Explore a realistic future: sustainable cities, human-centered AI, and practical steps we can take today to build a brighter tomorrow.</p>
+
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:14px">
+            <button class="btn btn-primary" id="joinBtn">Join the Movement</button>
+            <button class="btn btn-ghost" id="learnMore">Explore Roadmap</button>
+            <div style="margin-left:auto;text-align:right">
+              <div style="font-size:12px;color:var(--muted)">Live</div>
+              <div class="type" id="liveType">Realistic Futures — Active</div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px" class="card">
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+              <div style="min-width:120px">
+                <div style="font-size:20px;font-weight:900;color:var(--accent)" id="miniStat1">0</div>
+                <div style="color:var(--muted);font-weight:800">Projects</div>
+              </div>
+              <div style="min-width:120px">
+                <div style="font-size:20px;font-weight:900;color:var(--accent)" id="miniStat2">0</div>
+                <div style="color:var(--muted);font-weight:800">Ideas</div>
+              </div>
+              <div style="min-width:120px">
+                <div style="font-size:20px;font-weight:900;color:var(--accent)" id="miniStat3">0</div>
+                <div style="color:var(--muted);font-weight:800">Contributors</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="width:420px;padding:18px">
+        <div class="card" aria-hidden="false">
+          <h3 style="margin-bottom:8px">Quick Actions</h3>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <a href="#vision" class="btn">Vision & Mission</a>
+            <a href="#timeline" class="btn">Timeline</a>
+            <a href="#gallery" class="btn">Gallery</a>
+            <a href="#contact" class="btn">Contact</a>
+          </div>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="card" aria-hidden="false">
+          <h3 style="margin-bottom:8px">Subscribe</h3>
+          <p style="color:var(--muted);margin-bottom:8px">Enter email to receive future briefs</p>
+          <input type="email" id="subEmail" placeholder="you@mail.com" style="padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);width:100%;margin-bottom:8px">
+          <button class="btn btn-primary" id="subBtn">Subscribe</button>
+        </div>
+      </div>
+
+      <!-- subtle skyline image -->
+      <svg class="skyline" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="url(#g1)"><rect x="0" y="200" width="800" height="100" fill="black" opacity="0.03"/></g>
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#00ffe7"/></linearGradient></defs>
+      </svg>
+
+    </section>
+
+    <!-- VISION & MISSION -->
+    <section id="vision">
+      <h2>Vision & Mission</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Vision</h3>
+          <p style="color:var(--muted)">A future where tech empowers people, cities run on clean energy, and education is universally accessible.</p>
+        </div>
+        <div class="card">
+          <h3>Mission</h3>
+          <p style="color:var(--muted)">Build practical tools, create learning paths, and collaborate with local communities to implement realistic solutions.</p>
+        </div>
+        <div class="card">
+          <h3>Values</h3>
+          <p style="color:var(--muted)">Human-first design, transparency, sustainability, and open collaboration.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline">
+      <h2>Timeline — Past to Practical Future</h2>
+      <div class="card">
+        <div class="timeline-track" aria-hidden="true"></div>
+        <div class="timeline-points" id="timelinePoints">
+          <!-- JS will add points and items -->
+        </div>
+        <div id="timelineItems" style="margin-top:16px"></div>
+      </div>
+    </section>
+
+    <!-- KNOWLEDGE FLIP CARDS -->
+    <section id="knowledge">
+      <h2>Interactive Knowledge Cards</h2>
+      <div class="flip-grid">
+        <div class="flip card">
+          <div class="flip-inner">
+            <div class="flip-card flip-front">
+              <h3>Human-Centered AI</h3>
+              <p style="color:var(--muted)">AI that explains decisions and respects privacy.</p>
+            </div>
+            <div class="flip-card flip-back">
+              <div><strong>Example:</strong> Transparent models, local-first processing, clear consent.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip card">
+          <div class="flip-inner">
+            <div class="flip-card flip-front">
+              <h3>Microgrids & Energy</h3>
+              <p style="color:var(--muted)">Local energy systems and storage reduce waste.</p>
+            </div>
+            <div class="flip-card flip-back">
+              <div><strong>Example:</strong> Solar + battery hubs powering neighborhoods during peak.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip card">
+          <div class="flip-inner">
+            <div class="flip-card flip-front">
+              <h3>Transport & Mobility</h3>
+              <p style="color:var(--muted)">Shared, electric, and autonomous options to lower emissions.</p>
+            </div>
+            <div class="flip-card flip-back">
+              <div><strong>Example:</strong> On-demand shuttles + micro-mobility lanes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>Global Gallery</h2>
+      <div class="grid gallery">
+        <img src="https://picsum.photos/520/320?1" alt="future 1">
+        <img src="https://picsum.photos/520/320?2" alt="future 2">
+        <img src="https://picsum.photos/520/320?3" alt="future 3">
+        <img src="https://picsum.photos/520/320?4" alt="future 4">
+        <img src="https://picsum.photos/520/320?5" alt="future 5">
+        <img src="https://picsum.photos/520/320?6" alt="future 6">
+      </div>
+    </section>
+
+    <!-- MAP PLACEHOLDER -->
+    <section>
+      <h2>World Map — Future Cities (placeholder)</h2>
+      <div class="card map-placeholder">Interactive map placeholder — replace with Leaflet/Mapbox later</div>
+    </section>
+
+    <!-- AI SHOWCASE & ROADMAP -->
+    <section>
+      <h2>AI & Robotics Showcase</h2>
+      <div class="showcase">
+        <div class="card robot">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="8" y="20" width="48" height="34" rx="6" fill="url(#g)"/><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#00d4ff"/><stop offset="1" stop-color="#00ffe7"/></linearGradient></defs></svg>
+          <h4>Robotic Assistants</h4>
+          <p style="color:var(--muted)">Assistive robots that help daily tasks while keeping privacy safe.</p>
+        </div>
+
+        <div class="card">
+          <h3>Roadmap — 2025 to 2035</h3>
+          <div class="roadmap">
+            <div class="road-step"><strong>2025</strong><div style="color:var(--muted);margin-left:8px">Local pilot projects & education programs.</div></div>
+            <div class="road-step"><strong>2027</strong><div style="color:var(--muted);margin-left:8px">Integrate microgrids & smart mobility.</div></div>
+            <div class="road-step"><strong>2030</strong><div style="color:var(--muted);margin-left:8px">Scale sustainable tech across cities.</div></div>
+            <div class="road-step"><strong>2035</strong><div style="color:var(--muted);margin-left:8px">Data-driven public services and wide collaboration.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTES CAROUSEL -->
+    <section>
+      <h2>Innovation Quotes</h2>
+      <div class="quotes card" id="quotesWrap">
+        <div class="quotes-track" id="quotesTrack">
+          <div class="quote"><strong>“Design for people, not for the tech.”</strong><div style="color:var(--muted);margin-top:8px">— Human-First Collective</div></div>
+          <div class="quote"><strong>“Small pilots scale to big changes.”</strong><div style="color:var(--muted);margin-top:8px">— Urban Labs</div></div>
+          <div class="quote"><strong>“Sustainability is the new innovation.”</strong><div style="color:var(--muted);margin-top:8px">— Future Council</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARALLAX -->
+    <section aria-hidden="true">
+      <div class="parallax" role="img" aria-label="space parallax background"></div>
+    </section>
+
+    <!-- COUNTERS -->
+    <section>
+      <h2>Impact Counters</h2>
+      <div class="counters">
+        <div class="counter"><div class="big" data-target="120000">0</div><div style="color:var(--muted)">Ideas Shared</div></div>
+        <div class="counter"><div class="big" data-target="75">0</div><div style="color:var(--muted)">Pilot Projects</div></div>
+        <div class="counter"><div class="big" data-target="42">0</div><div style="color:var(--muted)">Cities Reached</div></div>
+        <div class="counter"><div class="big" data-target="3500">0</div><div style="color:var(--muted)">Contributors</div></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details><summary>How can I contribute?</summary><p style="color:var(--muted)">Start by joining local projects, sharing ideas, or contacting us through the form.</p></details>
+        <details><summary>Is this open-source?</summary><p style="color:var(--muted)">Yes. We encourage open collaboration and sharing of resources.</p></details>
+        <details><summary>How realistic are the goals?</summary><p style="color:var(--muted)">Every goal includes practical pilot steps and timelines focused on feasibility.</p></details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Join Us / Contact</h2>
+      <div class="card contact-grid">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+          <input name="name" placeholder="Your name" required>
+          <input name="_replyto" type="email" placeholder="Your email" required>
+          <input name="location" placeholder="City, Country">
+          <textarea name="message" rows="6" placeholder="How would you like to help?"></textarea>
+          <button class="contact-btn" type="submit">Send Message</button>
+          <p id="contactSuccess" style="display:none;color:green;margin-top:8px">Thanks — message sent.</p>
+        </form>
+
+        <div>
+          <div class="card">
+            <h3>Office</h3>
+            <p style="color:var(--muted)">Karachi, Pakistan</p>
+          </div>
+          <div class="card">
+            <h3>Social</h3>
+            <p style="color:var(--muted)"><a href="#" style="color:var(--accent)">Twitter</a> • <a href="#" style="color:var(--accent)">GitHub</a></p>
+          </div>
+          <div class="card">
+            <h3>Join List</h3>
+            <p style="color:var(--muted)">We will notify contributors when pilot projects start.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="max-width:var(--maxw);margin:0 auto;padding:18px;color:var(--muted)">© <span id="year"></span> Future Hub • Built by M Haris — realistic ideas for real change.</div>
+    </footer>
+
+  </main>
+
+  <!-- ---------- Scripts (animations, interactivity) ---------- -->
+  <script>
+    (function(){
+      // Theme toggle (keeps same key as other pages)
+      const THEME_KEY = 'mharis_theme_v2';
+      const themeBtn = document.getElementById('themeToggle');
+      function applyTheme(t){
+        if(t==='dark'){ document.documentElement.setAttribute('data-theme','dark'); themeBtn.textContent='Light Mode'; themeBtn.setAttribute('aria-pressed','true'); }
+        else{ document.documentElement.removeAttribute('data-theme'); themeBtn.textContent='Dark Mode'; themeBtn.setAttribute('aria-pressed','false'); }
+      }
+      const saved = localStorage.getItem(THEME_KEY);
+      if(saved) applyTheme(saved);
+      else applyTheme(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        applyTheme(next); localStorage.setItem(THEME_KEY, next);
+      });
+
+      // Mini hero counters
+      function animateMiniStats(){
+        const s1 = document.getElementById('miniStat1');
+        const s2 = document.getElementById('miniStat2');
+        const s3 = document.getElementById('miniStat3');
+        let a=0,b=0,c=0;
+        const i=setInterval(()=>{ a+=4; b+=6; c+=2; if(a>=120){a=120;} if(b>=480){b=480;} if(c>=75){c=75;} s1.textContent=a; s2.textContent=b; s3.textContent=c; if(a===120 && b===480 && c===75) clearInterval(i); },12);
+      }
+      animateMiniStats();
+
+      // Timeline populate
+      const timelinePoints = [
+        {year:'2000',text:'Internet scale-up and early web apps.'},
+        {year:'2010',text:'Mobile first: apps everywhere.'},
+        {year:'2020',text:'AI becomes practical for many tasks.'},
+        {year:'2025',text:'Local pilots, microgrids, and community labs.'},
+        {year:'2030',text:'Smart neighborhoods and data-aware services.'},
+        {year:'2035',text:'Wider adoption and better global sharing.'}
+      ];
+      const tpWrap = document.getElementById('timelinePoints');
+      const itemsWrap = document.getElementById('timelineItems');
+      timelinePoints.forEach((p, i) => {
+        const pt = document.createElement('div');
+        pt.className = 'timeline-point';
+        tpWrap.appendChild(pt);
+
+        const item = document.createElement('div');
+        item.className = 'timeline-item';
+        item.innerHTML = '<strong style="min-width:80px">'+p.year+'</strong><div style="color:var(--muted)">'+p.text+'</div>';
+        itemsWrap.appendChild(item);
+      });
+
+      // Quotes carousel
+      const quotes = document.getElementById('quotesTrack');
+      let qIndex = 0;
+      function advanceQuotes(){
+        qIndex = (qIndex+1)%quotes.children.length;
+        quotes.style.transform = 'translateX(' + (-qIndex * (quotes.children[0].offsetWidth + 12)) + 'px)';
+      }
+      setInterval(advanceQuotes, 3500);
+
+      // Counters animation
+      function animateCounters(){
+        document.querySelectorAll('.counter .big').forEach(el => {
+          const target = +el.getAttribute('data-target');
+          let current = 0;
+          const step = Math.ceil(target / 150);
+          const id = setInterval(()=> {
+            current += step;
+            if(current >= target){ current = target; clearInterval(id); }
+            el.textContent = current.toLocaleString();
+          }, 12);
+        });
+      }
+      // Run counters when visible
+      const cWrap = document.querySelector('.counters');
+      if(cWrap){
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if(e.isIntersecting){ animateCounters(); obs.disconnect(); }});
+        }, {threshold:0.25});
+        obs.observe(cWrap);
+      }
+
+      // Contact form via fetch (Formspree)
+      const contactForm = document.getElementById('contactForm');
+      const contactSuccess = document.getElementById('contactSuccess');
+      if(contactForm){
+        contactForm.addEventListener('submit', function(e){
+          e.preventDefault();
+          const action = contactForm.action;
+          const data = new FormData(contactForm);
+          fetch(action, { method:'POST', body:data, headers:{'Accept':'application/json'} })
+            .then(res => { if(res.ok){ contactSuccess.style.display='block'; contactForm.reset(); setTimeout(()=>contactSuccess.style.display='none',3500);} else alert('Error sending message'); })
+            .catch(()=> alert('Network error.'));
+        });
+      }
+
+      // Gallery open
+      document.querySelectorAll('.gallery img').forEach(img => img.addEventListener('click', ()=> window.open(img.src, '_blank')));
+
+      // Quotes track resize correction
+      window.addEventListener('resize', ()=> { quotes.style.transform = 'translateX(0)'; qIndex = 0; });
+
+      // Join / CTA smooth scroll
+      document.getElementById('joinBtn').addEventListener('click', ()=> {
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      });
+      document.getElementById('learnMore').addEventListener('click', ()=> {
+        document.getElementById('timeline').scrollIntoView({behavior:'smooth'});
+      });
+
+      // Subscribe button simple action (demo)
+      const subBtn = document.getElementById('subBtn');
+      subBtn.addEventListener('click', ()=> {
+        const email = document.getElementById('subEmail').value;
+        if(!email) { alert('Enter email'); return; }
+        subBtn.textContent = 'Subscribed ✓';
+        setTimeout(()=> subBtn.textContent = 'Subscribe', 2500);
+      });
+
+      // Dynamic year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Accessibility: allow keyboard flip (space) on flip cards
+      document.querySelectorAll('.flip').forEach(f=>{
+        f.setAttribute('tabindex','0');
+        f.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') { f.querySelector('.flip-inner').classList.toggle('flipped'); }});
+      });
+    })();
+  </script>
+</body>
+</html>

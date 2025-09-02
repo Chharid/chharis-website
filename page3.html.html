@@ -1,469 +1,209 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="M Haris — portfolio, projects, tutorials and feedback. Built with HTML, CSS and JavaScript." />
-  <title>M Haris — Portfolio</title>
+  <meta name="description" content="M Haris — Rare Futuristic Long Page with stars, console, quotes, timeline and gallery." />
+  <title>M Haris — Page 3</title>
   <link rel="icon" href="logo.png" />
   <style>
-    /* ---------- Reset & Base ---------- */
-    :root{
-      --accent: #f7df1e;
-      --dark: #323330;
-      --muted: #6b6b6b;
-      --glass: rgba(255,255,255,0.06);
+    :root {
+      --bg:#f2f2f2;
+      --card:#fff;
+      --text:#222;
+      --accent:#0077ff;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter,system-ui,Segoe UI,Arial;line-height:1.45;color:#222}
-    a{color:inherit}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+    body{background:var(--bg);color:var(--text);line-height:1.6;position:relative;overflow-x:hidden}
 
-
-    /* ---------- NAV ---------- */
-    nav{position:sticky;top:0;background:var(--dark);color:var(--accent);display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:16px;z-index:1000}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:58px;height:58px;border-radius:50%;border:3px solid var(--accent)}
-    .brand h1{font-size:20px;color:#fff}
-    .nav-links{display:flex;gap:14px;align-items:center}
-    .nav-links a{color:var(--accent);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
-    .nav-links a:hover{background:rgba(255,255,255,0.04)}
-    .cta{background:var(--accent);color:#111;padding:8px 12px;border-radius:10px;font-weight:700}
-    
-    /* ---------- Mobile ---------- */
-    .menu-toggle{display:none;font-size:24px;color:var(--accent);cursor:pointer}
-    @media(max-width:860px){
-      .nav-links{position:fixed;inset:auto 12px 12px 12px;background:#111;padding:16px;border-radius:12px;flex-direction:column;display:none}
-      .nav-links.show{display:flex}
-      .menu-toggle{display:block}
+    /* STAR BACKGROUND */
+    #stars, #stars2, #stars3 {
+      position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;
+      background:transparent url('https://www.script-tutorials.com/demos/360/images/stars.png') repeat;
+      animation:moveStars 200s linear infinite;
     }
+    #stars2{background-size:contain;opacity:0.5;animation-duration:300s}
+    #stars3{background-size:cover;opacity:0.2;animation-duration:400s}
+    @keyframes moveStars{from{background-position:0 0}to{background-position:10000px 10000px}}
 
-    /* ---------- Hero ---------- */
-    .hero{min-height:420px;background-image:linear-gradient(rgba(7,11,15,0.45),rgba(7,11,15,0.45)),url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;display:flex;align-items:center;padding:40px 6vw;color:#fff}
-    .hero-content{max-width:980px}
-    .hero h2{font-size:38px;margin-bottom:10px}
-    .sub{color:var(--accent);font-weight:700}
-    .hero p{max-width:720px;margin-top:8px;color:rgba(255,255,255,0.9)}
-    .hero-actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    nav {
+      background:var(--card);
+      padding:12px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:0 2px 5px rgba(0,0,0,.1);
+      position:sticky;top:0;z-index:10;
+    }
+    nav h1{color:var(--accent);font-size:20px}
+    nav a{color:var(--accent);text-decoration:none;margin-left:15px;font-weight:600}
 
-    /* ---------- Layout ---------- */
-    .container{max-width:1100px;margin:40px auto;padding:0 20px}
-    section{padding:36px 0;border-bottom:1px solid #eee}
-    section h3{font-size:22px;margin-bottom:12px;color:var(--dark)}
+    header{padding:60px 20px;text-align:center}
+    .typing{font-size:28px;color:var(--accent);white-space:pre;overflow:hidden;border-right:2px solid var(--accent);width:28ch;margin:auto;animation:typing 6s steps(28), blink .6s step-end infinite alternate}
+    @keyframes typing{from{width:0}}
+    @keyframes blink{50%{border-color:transparent}}
+    #clock{font-size:18px;margin-top:15px;color:#555}
 
-    /* ---------- Cards / Grid ---------- */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(12,12,12,0.06);transition:transform .25s,box-shadow .25s}
-    .card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(12,12,12,0.09)}
-    .card h4{margin-bottom:8px}
-    .muted{color:var(--muted);font-size:14px}
+    main{max-width:900px;margin:auto;padding:20px}
+    section{background:var(--card);padding:30px;margin:25px 0;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,.1)}
+    h2{color:var(--accent);margin-bottom:20px;text-align:center}
 
-    /* ---------- Skills ---------- */
-    .skill{margin-bottom:14px}
-    .skill .bar{height:12px;background:#eee;border-radius:999px;overflow:hidden}
-    .skill .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#ffd773);border-radius:999px}
+    #console{background:#111;color:#0f0;font-family:monospace;font-size:14px;padding:20px;border-radius:8px;height:200px;overflow-y:auto;display:none}
+    #consoleBtn{display:block;margin:0 auto 20px auto;padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 
-    /* ---------- Projects ---------- */
-    .project{display:flex;gap:16px;align-items:center}
-    .project img{width:120px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    #quote{font-size:18px;color:#333;background:#f9f9f9;padding:20px;border-left:4px solid var(--accent);border-radius:6px;text-align:center}
 
-    /* ---------- Testimonials / Slider (simple) ---------- */
-    .testimonials{display:flex;gap:12px;overflow-x:auto;padding:10px 4px}
-    .testimonial{min-width:260px;background:linear-gradient(180deg,#fff,#fafafa);padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+    .facts p{margin:10px 0;padding:12px;background:#eef;border-radius:6px}
 
-    /* ---------- Feedback List ---------- */
-    #feedbackList{display:flex;flex-direction:column;gap:12px}
-    .fb{background:#fff;padding:12px;border-radius:10px}
+    .timeline{border-left:3px solid var(--accent);padding-left:20px}
+    .timeline div{margin:20px 0}
+    .timeline h3{color:var(--accent)}
 
-    /* ---------- Forms ---------- */
-    form{display:flex;flex-direction:column;gap:10px}
-    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px}
-    button{padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+    .gallery img{width:100%;border-radius:10px;transition:transform .3s}
+    .gallery img:hover{transform:scale(1.05)}
 
-    /* ---------- Footer ---------- */
-    footer{background:var(--dark);color:var(--accent);padding:26px 20px;text-align:center;margin-top:40px}
-    .small{font-size:13px;color:#fff;opacity:.85}
+    .contact input,.contact textarea{
+      width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px
+    }
+    .contact button{padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:6px;cursor:pointer;font-weight:600}
 
-    /* ---------- Utilities ---------- */
-    .center{display:flex;align-items:center;justify-content:center}
-    .lead{font-size:16px;color:#444}
-    .pill{background:var(--glass);padding:6px 10px;border-radius:999px;color:#fff}
-
-    /* ---------- Back to top ---------- */
-    #topBtn{position:fixed;right:20px;bottom:20px;padding:10px 12px;border-radius:10px;background:var(--accent);color:#111;display:none;z-index:900}
-
-    /* Dark mode tweaks (uses class) */
-    .dark-mode{background:#0b0b0b;color:#ddd}
-    .dark-mode .card{background:#121212;color:#ddd}
-    .dark-mode section{border-color:#171717}
-    .dark-mode nav{background:#050505}
-
-    /* small screens tweaks */
-    @media(max-width:520px){.hero h2{font-size:26px}.brand h1{font-size:16px}}
+    footer{padding:20px;text-align:center;background:var(--card);color:#666;box-shadow:0 -2px 5px rgba(0,0,0,.1)}
   </style>
 </head>
 <body>
 
-  <!-- Preloader -->
-  <div id="preloader"><div class="spinner" aria-hidden="true"></div></div>
+<div id="stars"></div><div id="stars2"></div><div id="stars3"></div>
 
-  <<!-- NAV -->
-<nav aria-label="Main navigation">
-  <div class="brand">
-    <img src="logo.png" alt="M Haris logo">
-    <div>
-      <h1>M Haris</h1>
-      <div id="userGreeting" style="font-size:12px;color:var(--accent)">
-        Web dev • Learner • Creator
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;align-items:center;gap:12px">
-    <button class="menu-toggle" aria-expanded="false">☰</button>
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#tutorials">Tutorials</a>
-      <a href="#blog">Blog</a>
-      <a href="#feedback">Feedback</a>
-      <a href="#contact">Contact</a>
-      <a href="page2.html.html">Page 2</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="login.html">Login</a>
-      <a href="#" id="logoutBtn" style="display:none;color:var(--accent)">Logout</a>
-    </div>
+<nav>
+  <h1>M Haris — Rare Page</h1>
+  <div>
+    <a href="index.html.html">Home</a>
+    <a href="page2.html.html">Page 2</a>
+    <a href="page3.html.html">Page 3</a>
   </div>
 </nav>
 
+<header>
+  <div class="typing">Welcome to my futuristic rare Page 3...</div>
+  <div id="clock"></div>
+</header>
 
-</div>
+<main>
+  <section>
+    <h2>Hidden Hacker Console</h2>
+    <button id="consoleBtn">Open Console</button>
+    <div id="console"></div>
+  </section>
 
-  </nav>
+  <section>
+    <h2>Random Rare Quote</h2>
+    <div id="quote"></div>
+  </section>
 
-  <!-- HERO -->
-  <header class="hero" id="home">
-    <div class="hero-content">
-      <h2>Hello, I'm <span class="sub">M Haris</span></h2>
-      <p class="lead">I build small web projects, practice JavaScript, and learn by making. This site is a living portfolio — feel free to explore, leave feedback and try the interactive samples below.</p>
-      <div class="hero-actions">
-        <a class="cta" href="#projects">View Projects</a>
-        <a style="background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 12px;border-radius:8px;font-weight:700" href="#tutorials">See Tutorials</a>
+  <section class="facts">
+    <h2>Fun Rare Facts</h2>
+    <p>Did you know? Honey never spoils — archaeologists found 3000-year-old honey still edible.</p>
+    <p>The fingerprints of a koala are so similar to humans they can confuse forensic experts.</p>
+    <p>Sharks existed before trees were on Earth.</p>
+    <p>Bananas are berries, but strawberries are not.</p>
+  </section>
+
+  <section>
+    <h2>Knowledge Timeline</h2>
+    <div class="timeline">
+      <div>
+        <h3>2000 BC</h3>
+        <p>First known libraries appeared in Mesopotamia.</p>
+      </div>
+      <div>
+        <h3>1400s</h3>
+        <p>Gutenberg invented the printing press.</p>
+      </div>
+      <div>
+        <h3>1969</h3>
+        <p>First humans landed on the moon.</p>
+      </div>
+      <div>
+        <h3>2025</h3>
+        <p>You are building one of the rarest futuristic websites.</p>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main class="container">
-    <!-- ABOUT -->
-    <section id="about">
-      <h3>About Me</h3>
-      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-        <img src="logo.png" alt="profile" style="width:140px;height:140px;border-radius:12px;border:3px solid var(--dark)">
-        <div style="flex:1;min-width:260px">
-          <p class="muted">I am learning web development — HTML, CSS and JavaScript. I enjoy building small games, UI experiments and simple interactive pages. I share code, small tutorials and projects here as I learn.</p>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <div class="pill">Available for small projects</div>
-            <div class="pill">Based in Pakistan</div>
-            <div class="pill">Open to collaborations</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:18px">
-  <h4>Skills</h4>
-
-  <div class="skill" title="Expert in HTML & CSS">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;align-items:center;gap:6px">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="HTML Icon" style="width:20px;height:20px">
-        <strong>HTML & CSS</strong>
-      </div>
-      <span class="muted" id="htmlPerc">0%</span>
+  <section>
+    <h2>Rare Gallery</h2>
+    <div class="gallery">
+      <img src="https://picsum.photos/400/300?random=1" alt="rare1">
+      <img src="https://picsum.photos/400/300?random=2" alt="rare2">
+      <img src="https://picsum.photos/400/300?random=3" alt="rare3">
+      <img src="https://picsum.photos/400/300?random=4" alt="rare4">
     </div>
-    <div class="bar">
-      <div class="fill" data-value="80" style="background:linear-gradient(90deg,#f7df1e,#ffd773)"></div>
-    </div>
-  </div>
+  </section>
 
-  <div class="skill" title="Intermediate JavaScript skills">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;align-items:center;gap:6px">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS Icon" style="width:20px;height:20px">
-        <strong>JavaScript</strong>
-      </div>
-      <span class="muted" id="jsPerc">0%</span>
-    </div>
-    <div class="bar">
-      <div class="fill" data-value="60" style="background:linear-gradient(90deg,#f0db4f,#e5c100)"></div>
-    </div>
-  </div>
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
 
-  <div class="skill" title="Learning Animation & UI">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;align-items:center;gap:6px">
-        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="UI Icon" style="width:20px;height:20px">
-        <strong>Animation / UI</strong>
-      </div>
-      <span class="muted" id="uiPerc">0%</span>
-    </div>
-    <div class="bar">
-      <div class="fill" data-value="55" style="background:linear-gradient(90deg,#ff6a00,#ffb347)"></div>
-    </div>
-  </div>
-</div>
+<footer>
+  <p>&copy; <span id="year"></span> M Haris | Page 3 — Futuristic Rare Webpage</p>
+</footer>
 
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h3>Projects</h3>
-      <div class="grid">
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=60" alt="Project 1">
-          <div>
-            <h4>Portfolio v1</h4>
-            <p class="muted">A single-page portfolio with smooth scroll and light/dark theme. Built as a learning exercise.</p>
-            <p style="margin-top:8px"><small class="muted">HTML • CSS • JS</small></p>
-          </div>
-        </article>
-
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60" alt="project 2">
-          <div>
-            <h4>Interactive Quiz</h4>
-            <p class="muted">Small quiz app that saves high scores to local storage. Great for practicing DOM manipulation.</p>
-            <p style="margin-top:8px"><small class="muted">JavaScript</small></p>
-          </div>
-        </article>
-
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=60" alt="project 3">
-          <div>
-            <h4>Mini Game — Catch the Dot</h4>
-            <p class="muted">A small canvas game made for learning timing and simple physics. Easy to extend.</p>
-            <p style="margin-top:8px"><small class="muted">Canvas • JS</small></p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- TUTORIALS -->
-    <section id="tutorials">
-      <h3>Tutorials & Resources</h3>
-      <div class="grid">
-        <div class="card"><h4>Beginner JavaScript</h4><p class="muted">Small notes and exercises for learning variables, loops and functions.</p></div>
-        <div class="card"><h4>Responsive Layouts</h4><p class="muted">Tips for building sites that work on phones and desktops without frameworks.</p></div>
-        <div class="card"><h4>Animations</h4><p class="muted">How to use CSS keyframes, transitions and the Web Animations API.</p></div>
-      </div>
-    </section>
-
-    <!-- BLOG (sample long content) -->
-    <section id="blog">
-      <h3>Blog</h3>
-      <article class="card">
-        <h4>How I built my first portfolio</h4>
-        <p class="muted">Short story: I started with a template, removed many parts, and learned to rebuild sections until they looked right. Writing about steps helps me remember. Below is a long-form example paragraph to make this page longer and realistic. Keep making small projects. Publish early and iterate often. Ask for feedback from friends and teachers.</p>
-        <p style="margin-top:10px">Extra notes: use version control (git), keep assets small, and compress images. When you get stuck, search for examples or read MDN. Most importantly, practice by copying small UI pieces and then changing them.</p>
-      </article>
-      <article class="card" style="margin-top:12px">
-        <h4>Design tips for beginners</h4>
-        <p class="muted">Use consistent spacing, limit colors to 2-3, and choose readable fonts. White space is not wasted space — it helps deliver information clearly. Aim for clarity over fancy effects.</p>
-      </article>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-      <h3>What People Say</h3>
-      <div class="testimonials" aria-live="polite">
-        <div class="testimonial"><strong>Teacher</strong><p class="muted">"Shows enthusiasm and learns quickly."</p></div>
-        <div class="testimonial"><strong>Friend</strong><p class="muted">"Great small projects and helpful explanations."</p></div>
-        <div class="testimonial"><strong>Mentor</strong><p class="muted">"Consistent practice is paying off."</p></div>
-      </div>
-    </section>
-
-    <!-- FEEDBACK -->
-    <section id="feedback">
-      <h3>Feedback</h3>
-      <p class="muted">Please leave feedback. Submissions are stored locally in your browser so you can experiment without sending data to a server.</p>
-
-      <div style="display:flex;gap:18px;flex-wrap:wrap">
-        <form id="feedbackForm" class="card" style="flex:1;min-width:300px" aria-label="Feedback form">
-          <label for="name">Name</label>
-          <input id="name" placeholder="Your name">
-          <label for="role">Role</label>
-          <select id="role"><option>Student</option><option>Teacher</option><option>Friend</option><option>Other</option></select>
-          <label for="message">Message</label>
-          <textarea id="message" rows="4" placeholder="What did you like or what should improve?"></textarea>
-          <div style="display:flex;gap:10px">
-            <button type="submit" style="background:var(--accent)">Send Feedback</button>
-            <button type="button" id="clearFeedback" style="background:#ddd;color:#111">Clear All</button>
-          </div>
-        </form>
-
-        <div style="flex:1;min-width:300px">
-          <h4>Recent feedback</h4>
-          <div id="feedbackList" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h3>Contact</h3>
-      <p class="muted">Want to collaborate? Send a short message — this demo stores messages locally (no server) so it's safe to test.</p>
-      <form id="contactForm" class="card" style="max-width:720px">
-        <input id="c_name" placeholder="Your name" required>
-        <input id="c_email" placeholder="Email (optional)">
-        <textarea id="c_message" placeholder="Short message" rows="4"></textarea>
-        <div style="display:flex;gap:10px">
-          <button type="submit" style="background:var(--dark);color:var(--accent)">Send</button>
-          <button type="button" id="downloadData">Download Data</button>
-        </div>
-      </form>
-    </section>
-
-  </main>
-
-  <button id="topBtn" aria-label="Back to top">↑</button>
-
-  <footer>
-    <div>&copy; <span id="year"></span> M Haris — Built for learning and fun. Made in Pakistan 🇵🇰</div>
-    <div class="small" style="margin-top:6px">This page stores feedback locally. To reset, use the Clear All button in Feedback.</div>
-  </footer>
-
-  <script>
-    // ---------- Small helpers ----------
-    const $ = (s,ctx=document)=>ctx.querySelector(s);
-    const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
-
-    // Preloader hide
-    window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),400)});
-
-    // Year
-    document.getElementById('year').innerText = new Date().getFullYear();
-
-    // Mobile nav toggle
-    const menuToggle = $('.menu-toggle');
-    const navLinks = $('#navLinks');
-    menuToggle.addEventListener('click',()=>{
-      const is = navLinks.classList.toggle('show');
-      menuToggle.setAttribute('aria-expanded', is);
-    });
-
-    // Smooth scroll for internal links
-    $$('.nav-links a').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        if(a.hash){
-          e.preventDefault();document.querySelector(a.hash).scrollIntoView({behavior:'smooth',block:'start'});
-          navLinks.classList.remove('show');
-        }
-      })
-    });
-
-    // Back to top button
-    const topBtn = $('#topBtn');
-    window.addEventListener('scroll',()=>{if(window.scrollY>300)topBtn.style.display='block';else topBtn.style.display='none'});
-    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-    // Animate skill bars on view
-    const fills = $$('.fill');
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const val=el.dataset.value;el.style.width=val+'%';observer.unobserve(el)}}),{threshold:0.4}
-   ;
-    fills.forEach(f=>observer.observe(f));
-
-    // LocalStorage-based feedback system
-    const FB_KEY = 'mharis_feedback_v1';
-    const feedbackForm = $('#feedbackForm');
-    const feedbackList = $('#feedbackList');
-    const clearBtn = $('#clearFeedback');
-
-    function loadFeedback(){
-      const raw = localStorage.getItem(FB_KEY);
-      const items = raw?JSON.parse(raw):[];
-      feedbackList.innerHTML = items.length?items.map(i=>`<div class="fb"><strong>${escapeHtml(i.name || 'Anonymous')}</strong> <small class="muted">(${escapeHtml(i.role)})</small><p style="margin-top:6px">${escapeHtml(i.message)}</p><small class="muted">${new Date(i.ts).toLocaleString()}</small></div>`).join(''):'<div class="muted">No feedback yet — be the first!</div>';
-    }
-    function saveFeedback(items){localStorage.setItem(FB_KEY,JSON.stringify(items));loadFeedback();}
-
-    feedbackForm.addEventListener('submit',e=>{
-      e.preventDefault();
-      const name = $('#name').value.trim();
-      const role = $('#role').value;
-      const message = $('#message').value.trim();
-      if(!message){alert('Please write a short message.');return}
-      const items = JSON.parse(localStorage.getItem(FB_KEY)||'[]');
-      items.unshift({name:name||'Anonymous',role,message,ts:Date.now()});
-      saveFeedback(items);
-      feedbackForm.reset();
-      alert('Thanks for the feedback — saved locally.');
-    });
-    clearBtn.addEventListener('click',()=>{if(confirm('Clear all feedback from this browser?')){localStorage.removeItem(FB_KEY);loadFeedback();}});
-    loadFeedback();
-
-    // Contact form saves to local storage too and allows download
-    const contactForm = $('#contactForm');
-    const downloadBtn = $('#downloadData');
-    const CONTACT_KEY = 'mharis_contact_v1';
-    contactForm.addEventListener('submit',e=>{e.preventDefault();const data={name:$('#c_name').value,email:$('#c_email').value,message:$('#c_message').value,ts:Date.now()};const arr=JSON.parse(localStorage.getItem(CONTACT_KEY)||'[]');arr.unshift(data);localStorage.setItem(CONTACT_KEY,JSON.stringify(arr));contactForm.reset();alert('Message saved locally. Use Download to get a copy.');});
-    downloadBtn.addEventListener('click',()=>{const d=localStorage.getItem(CONTACT_KEY)||'[]';const blob=new Blob([d],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='mharis_contacts.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)});
-
-    // Escape helper to avoid injection when rendering local content
-    function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
-
-    // Typing effect in hero (simple)
-    (function(){const el=document.createElement('div');el.style.marginTop='8px';el.style.fontFamily='monospace';el.style.color='var(--accent)';document.querySelector('.hero-content').appendChild(el);const texts=['Web developer in the making','JavaScript & UI experiments','Learning by building'];let ti=0,ci=0,del=false;function t(){const txt=texts[ti];el.textContent=txt.slice(0,ci);ci += del?-1:1;if(!del && ci===txt.length){del=true;setTimeout(t,1400)}else if(del && ci===0){del=false;ti=(ti+1)%texts.length;setTimeout(t,350)}else setTimeout(t,del?80:120)}t();})();
-
-    // Save theme preference
-    const THEME_KEY = 'mharis_theme';
-    function applyTheme(){if(localStorage.getItem(THEME_KEY)==='dark')document.documentElement.classList.add('dark-mode');else document.documentElement.classList.remove('dark-mode')}
-    applyTheme();
-    // small keyboard shortcut: t toggles theme
-    window.addEventListener('keydown',(e)=>{if(e.key.toLowerCase()==='t'){const next = document.documentElement.classList.toggle('dark-mode');localStorage.setItem(THEME_KEY,next?'dark':'light');}});
-
-    // Simple accessibility: focus outlines for keyboard users
-    document.body.addEventListener('keydown',e=>{if(e.key==='Tab')document.documentElement.style.scrollBehavior='smooth'});
-
-    // Optional: service worker registration (commented, requires sw file to fully work)
-    if('serviceWorker' in navigator){
-      // navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    }
-    // ---------------- LOGIN / SIGNUP ----------------
-  const loginLink = $('#loginLink');
-  const signupLink = $('#signupLink');
-  const logoutBtn = $('#logoutBtn');
-  const userGreeting = $('#userGreeting');
-
-  function updateUserUI(){
-    const user = localStorage.getItem('mharis_user');
-    if(user){
-      userGreeting.textContent = `Hello, ${user} 👋`;
-      loginLink.style.display='none';
-      signupLink.style.display='none';
-      logoutBtn.style.display='inline';
-    } else {
-      userGreeting.textContent = 'Web dev • Learner • Creator';
-      loginLink.style.display='inline';
-      signupLink.style.display='inline';
-      logoutBtn.style.display='none';
-    }
+<script>
+  // Clock + greeting
+  function updateClock(){
+    const now=new Date();
+    const hrs=now.getHours(), mins=String(now.getMinutes()).padStart(2,'0');
+    let greet="Hello";
+    if(hrs<12) greet="Good Morning ☀️";
+    else if(hrs<18) greet="Good Afternoon 🌤️";
+    else greet="Good Evening 🌙";
+    document.getElementById('clock').innerText=`${greet} | ${hrs}:${mins}`;
   }
-  updateUserUI();
+  setInterval(updateClock,1000);updateClock();
 
-  loginLink.addEventListener('click',()=>{
-    const name = prompt('Enter your username to login:');
-    if(name) { localStorage.setItem('mharis_user', name); updateUserUI(); alert('Logged in as '+name); }
-  });
+  // Console
+  const consoleBox=document.getElementById('console');
+  document.getElementById('consoleBtn').onclick=()=>{
+    consoleBox.style.display=consoleBox.style.display==='block'?'none':'block';
+    if(consoleBox.innerHTML===""){
+      let lines=[
+        "Initializing system...",
+        "Loading rare features...",
+        "Access granted ✅",
+        "Welcome to Page 3 hidden console."
+      ];
+      let i=0;
+      let interval=setInterval(()=>{
+        if(i<lines.length){
+          consoleBox.innerHTML+=lines[i]+"<br>";
+          consoleBox.scrollTop=consoleBox.scrollHeight;
+          i++;
+        } else clearInterval(interval);
+      },800);
+    }
+  };
 
-  signupLink.addEventListener('click',()=>{
-    const name = prompt('Enter your username to sign up:');
-    if(name) { localStorage.setItem('mharis_user', name); updateUserUI(); alert('Signed up and logged in as '+name); }
-  });
+  // Quotes
+  const quotes=[
+    "Rare minds discuss ideas. — Socrates",
+    "The future belongs to those who create it.",
+    "Simplicity is the ultimate sophistication. — Leonardo da Vinci",
+    "Your uniqueness is your greatest strength.",
+    "Innovation is seeing what everyone has seen and thinking what no one has thought."
+  ];
+  document.getElementById('quote').innerText=quotes[Math.floor(Math.random()*quotes.length)];
 
-  logoutBtn.addEventListener('click',()=>{
-    if(confirm('Do you want to logout?')) { localStorage.removeItem('mharis_user'); updateUserUI(); alert('Logged out'); }
-  });
+  // Year
+  document.getElementById('year').innerText=new Date().getFullYear();
+</script>
 
-
-  </script>
 </body>
 </html>
