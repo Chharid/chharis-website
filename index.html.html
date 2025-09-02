@@ -1,111 +1,303 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="M Haris — portfolio, projects, tutorials and feedback. Built with HTML, CSS and JavaScript." />
-  <title>M Haris — Portfolio</title>
-  <link rel="icon" href="logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M Haris | Page 3</title>
   <style>
-    /* ---------- Reset & Base ---------- */
-    :root{
-      --accent: #f7df1e;
-      --dark: #323330;
-      --muted: #6b6b6b;
-      --glass: rgba(255,255,255,0.06);
+    :root {
+      --accent: #00d4ff;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter,system-ui,Segoe UI,Arial;line-height:1.45;color:#222}
-    a{color:inherit}
 
+    /* ---------- Base ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #f2f2f2;
+      color: #222;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: #111;
+      color: #eee;
+    }
 
-    /* ---------- NAV ---------- */
-    nav{position:sticky;top:0;background:var(--dark);color:var(--accent);display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:16px;z-index:1000}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:58px;height:58px;border-radius:50%;border:3px solid var(--accent)}
-    .brand h1{font-size:20px;color:#fff}
-    .nav-links{display:flex;gap:14px;align-items:center}
-    .nav-links a{color:var(--accent);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
-    .nav-links a:hover{background:rgba(255,255,255,0.04)}
-    .cta{background:var(--accent);color:#111;padding:8px 12px;border-radius:10px;font-weight:700}
-    
-    /* ---------- Mobile ---------- */
-    .menu-toggle{display:none;font-size:24px;color:var(--accent);cursor:pointer}
-    @media(max-width:860px){
-      .nav-links{position:fixed;inset:auto 12px 12px 12px;background:#111;padding:16px;border-radius:12px;flex-direction:column;display:none}
-      .nav-links.show{display:flex}
-      .menu-toggle{display:block}
+    /* ---------- Navbar ---------- */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav .brand img {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+    }
+    nav .brand h1 {
+      font-size: 1.4rem;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    nav .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav .nav-links a:hover {
+      color: var(--accent);
+    }
+    .toggle-btn {
+      cursor: pointer;
+      background: var(--accent);
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .toggle-btn:hover {
+      background: #fff;
+      color: #000;
     }
 
     /* ---------- Hero ---------- */
-    .hero{min-height:420px;background-image:linear-gradient(rgba(7,11,15,0.45),rgba(7,11,15,0.45)),url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;display:flex;align-items:center;padding:40px 6vw;color:#fff}
-    .hero-content{max-width:980px}
-    .hero h2{font-size:38px;margin-bottom:10px}
-    .sub{color:var(--accent);font-weight:700}
-    .hero p{max-width:720px;margin-top:8px;color:rgba(255,255,255,0.9)}
-    .hero-actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    header {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      max-width: 600px;
+    }
+    header a {
+      background: var(--accent);
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #000;
+      transition: 0.3s;
+    }
+    header a:hover {
+      background: #fff;
+    }
 
-    /* ---------- Layout ---------- */
-    .container{max-width:1100px;margin:40px auto;padding:0 20px}
-    section{padding:36px 0;border-bottom:1px solid #eee}
-    section h3{font-size:22px;margin-bottom:12px;color:var(--dark)}
+    /* ---------- Sections ---------- */
+    section {
+      padding: 80px 60px;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
 
-    /* ---------- Cards / Grid ---------- */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(12,12,12,0.06);transition:transform .25s,box-shadow .25s}
-    .card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(12,12,12,0.09)}
-    .card h4{margin-bottom:8px}
-    .muted{color:var(--muted);font-size:14px}
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+    }
+    .feature {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .feature:hover {
+      transform: translateY(-10px);
+    }
+    body.dark .feature {
+      background: #222;
+    }
 
-    /* ---------- Skills ---------- */
-    .skill{margin-bottom:14px}
-    .skill .bar{height:12px;background:#eee;border-radius:999px;overflow:hidden}
-    .skill .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#ffd773);border-radius:999px}
+    /* Parallax */
+    .parallax {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+      background-attachment: fixed;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    }
 
-    /* ---------- Projects ---------- */
-    .project{display:flex;gap:16px;align-items:center}
-    .project img{width:120px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    /* Portfolio */
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .portfolio-item {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .portfolio-item img {
+      width: 100%;
+      display: block;
+    }
+    .portfolio-item:hover {
+      transform: scale(1.05);
+    }
+    body.dark .portfolio-item {
+      background: #222;
+    }
 
-    /* ---------- Testimonials / Slider (simple) ---------- */
-    .testimonials{display:flex;gap:12px;overflow-x:auto;padding:10px 4px}
-    .testimonial{min-width:260px;background:linear-gradient(180deg,#fff,#fafafa);padding:14px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04)}
+    /* About */
+    .about {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+    .about p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
 
-    /* ---------- Feedback List ---------- */
-    #feedbackList{display:flex;flex-direction:column;gap:12px}
-    .fb{background:#fff;padding:12px;border-radius:10px}
+    /* Testimonials */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 20px;
+    }
+    .testimonial {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-style: italic;
+    }
+    body.dark .testimonial {
+      background: #222;
+    }
 
-    /* ---------- Forms ---------- */
-    form{display:flex;flex-direction:column;gap:10px}
-    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px}
-    button{padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
+    /* Blog */
+    .blog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+    }
+    .post {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    body.dark .post {
+      background: #222;
+    }
 
-    /* ---------- Footer ---------- */
-    footer{background:var(--dark);color:var(--accent);padding:26px 20px;text-align:center;margin-top:40px}
-    .small{font-size:13px;color:#fff;opacity:.85}
+    /* Feedback */
+    .feedback form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .feedback input, .feedback textarea {
+      margin: 10px 0;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .feedback button {
+      padding: 12px;
+      background: var(--accent);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #000;
+      transition: 0.3s;
+    }
+    .feedback button:hover {
+      background: #fff;
+    }
 
-    /* ---------- Utilities ---------- */
-    .center{display:flex;align-items:center;justify-content:center}
-    .lead{font-size:16px;color:#444}
-    .pill{background:var(--glass);padding:6px 10px;border-radius:999px;color:#fff}
+    /* Footer */
+    footer {
+      background: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+    }
 
-    /* ---------- Back to top ---------- */
-    #topBtn{position:fixed;right:20px;bottom:20px;padding:10px 12px;border-radius:10px;background:var(--accent);color:#111;display:none;z-index:900}
-
-    /* Dark mode tweaks (uses class) */
-    .dark-mode{background:#0b0b0b;color:#ddd}
-    .dark-mode .card{background:#121212;color:#ddd}
-    .dark-mode section{border-color:#171717}
-    .dark-mode nav{background:#050505}
-
-    /* small screens tweaks */
-    @media(max-width:520px){.hero h2{font-size:26px}.brand h1{font-size:16px}}
+    /* Mobile menu slide-in */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100%;
+        width: 250px;
+        background: rgba(0,0,0,0.95);
+        flex-direction: column;
+        gap: 20px;
+        padding: 60px 20px;
+        z-index: 999;
+        transition: right 0.3s ease;
+      }
+      .nav-links.active {
+        right: 0;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Preloader -->
-  <div id="preloader"><div class="spinner" aria-hidden="true"></div></div>
 
   <<!-- NAV -->
 <nav aria-label="Main navigation">
@@ -138,332 +330,137 @@
 </nav>
 
 
-</div>
-
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero" id="home">
-    <div class="hero-content">
-      <h2>Hello, I'm <span class="sub">M Haris</span></h2>
-      <p class="lead">I build small web projects, practice JavaScript, and learn by making. This site is a living portfolio — feel free to explore, leave feedback and try the interactive samples below.</p>
-      <div class="hero-actions">
-        <a class="cta" href="#projects">View Projects</a>
-        <a style="background:transparent;border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 12px;border-radius:8px;font-weight:700" href="#tutorials">See Tutorials</a>
-      </div>
-    </div>
+  <!-- Hero -->
+  <header id="hero">
+    <h1>Welcome to My Creative World</h1>
+    <p>Explore advanced designs, smooth animations, and modern web layouts in one long page.</p>
+    <a href="#features">Get Started</a>
   </header>
 
-  <main class="container">
-    <!-- ABOUT -->
-    <section id="about">
-      <h3>About Me</h3>
-      <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-        <img src="logo.png" alt="profile" style="width:140px;height:140px;border-radius:12px;border:3px solid var(--dark)">
-        <div style="flex:1;min-width:260px">
-          <p class="muted">I am learning web development — HTML, CSS and JavaScript. I enjoy building small games, UI experiments and simple interactive pages. I share code, small tutorials and projects here as I learn.</p>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <div class="pill">Available for small projects</div>
-            <div class="pill">Based in Pakistan</div>
-            <div class="pill">Open to collaborations</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:18px">
-  <h4>Skills</h4>
-
-  <div class="skill" title="Expert in HTML & CSS">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;align-items:center;gap:6px">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="HTML Icon" style="width:20px;height:20px">
-        <strong>HTML & CSS</strong>
-      </div>
-      <span class="muted" id="htmlPerc">0%</span>
+  <!-- Features -->
+  <section id="features">
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature">⚡ Fast and Responsive</div>
+      <div class="feature">🎨 Creative Design</div>
+      <div class="feature">🌙 Dark Mode Support</div>
+      <div class="feature">📱 Mobile Friendly</div>
     </div>
-    <div class="bar">
-      <div class="fill" data-value="80" style="background:linear-gradient(90deg,#f7df1e,#ffd773)"></div>
+  </section>
+
+  <!-- Parallax -->
+  <div class="parallax">Scroll Effect</div>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+      <div class="portfolio-item"><img src="https://picsum.photos/400/250?1" alt="Portfolio 1"></div>
+      <div class="portfolio-item"><img src="https://picsum.photos/400/250?2" alt="Portfolio 2"></div>
+      <div class="portfolio-item"><img src="https://picsum.photos/400/250?3" alt="Portfolio 3"></div>
+      <div class="portfolio-item"><img src="https://picsum.photos/400/250?4" alt="Portfolio 4"></div>
     </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about">
+      <p>Hi, I’m Haris, passionate about creating modern web pages that are both beautiful and functional. I love experimenting with animations, responsive design, and interactive features.</p>
+      <p>This page is a showcase of creativity with consistent design from my homepage and extended sections for a long-scroll experience.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">“I deliver clean, modern, and engaging web pages.”</div>
+      <div class="testimonial">“A talented developer with an eye for design.”</div>
+      <div class="testimonial">“Working with Haris was smooth and enjoyable.”</div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog">
+    <h2>Latest Blog Posts</h2>
+    <div class="blog">
+      <div class="post"><h3>Post One</h3><p>Exploring new design techniques for creative websites.</p></div>
+      <div class="post"><h3>Post Two</h3><p>Why responsive design matters in 2025.</p></div>
+      <div class="post"><h3>Post Three</h3><p>How to add smooth animations without slowing down your site.</p></div>
+    </div>
+  </section>
+<!-- Feedback -->
+<section id="feedback">
+  <h2>Feedback</h2>
+  <div class="feedback">
+    <form id="feedbackForm" action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Feedback"></textarea>
+      <button type="submit">Send Feedback</button>
+    </form>
+    <p id="successMessage" style="display:none;color:green;margin-top:10px;text-align:center;">
+      Thank you! Your feedback has been sent successfully.
+    </p>
   </div>
+</section>
 
-  <div class="skill" title="Intermediate JavaScript skills">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;align-items:center;gap:6px">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JS Icon" style="width:20px;height:20px">
-        <strong>JavaScript</strong>
-      </div>
-      <span class="muted" id="jsPerc">0%</span>
-    </div>
-    <div class="bar">
-      <div class="fill" data-value="60" style="background:linear-gradient(90deg,#f0db4f,#e5c100)"></div>
-    </div>
-  </div>
+<script>
+  // Feedback form success message
+  const feedbackForm = document.getElementById("feedbackForm");
+  const successMessage = document.getElementById("successMessage");
 
-  <div class="skill" title="Learning Animation & UI">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;align-items:center;gap:6px">
-        <img src="https://cdn-icons-png.flaticon.com/512/3103/3103446.png" alt="UI Icon" style="width:20px;height:20px">
-        <strong>Animation / UI</strong>
-      </div>
-      <span class="muted" id="uiPerc">0%</span>
-    </div>
-    <div class="bar">
-      <div class="fill" data-value="55" style="background:linear-gradient(90deg,#ff6a00,#ffb347)"></div>
-    </div>
-  </div>
-</div>
+  feedbackForm.addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(feedbackForm);
+    const action = feedbackForm.action;
+
+    fetch(action, {
+      method: "POST",
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        successMessage.style.display = "block"; // Show success message
+        feedbackForm.reset(); // Clear form fields
+      } else {
+        alert("Oops! There was a problem submitting your feedback.");
+      }
+    }).catch(error => {
+      alert("Oops! There was a problem submitting your feedback.");
+    });
+  });
+</script>
 
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h3>Projects</h3>
-      <div class="grid">
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=60" alt="Project 1">
-          <div>
-            <h4>Portfolio v1</h4>
-            <p class="muted">A single-page portfolio with smooth scroll and light/dark theme. Built as a learning exercise.</p>
-            <p style="margin-top:8px"><small class="muted">HTML • CSS • JS</small></p>
-          </div>
-        </article>
-
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60" alt="project 2">
-          <div>
-            <h4>Interactive Quiz</h4>
-            <p class="muted">Small quiz app that saves high scores to local storage. Great for practicing DOM manipulation.</p>
-            <p style="margin-top:8px"><small class="muted">JavaScript</small></p>
-          </div>
-        </article>
-
-        <article class="card project">
-          <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=60" alt="project 3">
-          <div>
-            <h4>Mini Game — Catch the Dot</h4>
-            <p class="muted">A small canvas game made for learning timing and simple physics. Easy to extend.</p>
-            <p style="margin-top:8px"><small class="muted">Canvas • JS</small></p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- TUTORIALS -->
-    <section id="tutorials">
-      <h3>Tutorials & Resources</h3>
-      <div class="grid">
-        <div class="card"><h4>Beginner JavaScript</h4><p class="muted">Small notes and exercises for learning variables, loops and functions.</p></div>
-        <div class="card"><h4>Responsive Layouts</h4><p class="muted">Tips for building sites that work on phones and desktops without frameworks.</p></div>
-        <div class="card"><h4>Animations</h4><p class="muted">How to use CSS keyframes, transitions and the Web Animations API.</p></div>
-      </div>
-    </section>
-
-    <!-- BLOG (sample long content) -->
-    <section id="blog">
-      <h3>Blog</h3>
-      <article class="card">
-        <h4>How I built my first portfolio</h4>
-        <p class="muted">Short story: I started with a template, removed many parts, and learned to rebuild sections until they looked right. Writing about steps helps me remember. Below is a long-form example paragraph to make this page longer and realistic. Keep making small projects. Publish early and iterate often. Ask for feedback from friends and teachers.</p>
-        <p style="margin-top:10px">Extra notes: use version control (git), keep assets small, and compress images. When you get stuck, search for examples or read MDN. Most importantly, practice by copying small UI pieces and then changing them.</p>
-      </article>
-      <article class="card" style="margin-top:12px">
-        <h4>Design tips for beginners</h4>
-        <p class="muted">Use consistent spacing, limit colors to 2-3, and choose readable fonts. White space is not wasted space — it helps deliver information clearly. Aim for clarity over fancy effects.</p>
-      </article>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-      <h3>What People Say</h3>
-      <div class="testimonials" aria-live="polite">
-        <div class="testimonial"><strong>Teacher</strong><p class="muted">"Shows enthusiasm and learns quickly."</p></div>
-        <div class="testimonial"><strong>Friend</strong><p class="muted">"Great small projects and helpful explanations."</p></div>
-        <div class="testimonial"><strong>Mentor</strong><p class="muted">"Consistent practice is paying off."</p></div>
-      </div>
-    </section>
-
-    <!-- FEEDBACK -->
-    <section id="feedback">
-      <h3>Feedback</h3>
-      <p class="muted">Please leave feedback. Submissions are stored locally in your browser so you can experiment without sending data to a server.</p>
-
-      <div style="display:flex;gap:18px;flex-wrap:wrap">
-        <form id="feedbackForm" class="card" style="flex:1;min-width:300px" aria-label="Feedback form">
-          <label for="name">Name</label>
-          <input id="name" placeholder="Your name">
-          <label for="role">Role</label>
-          <select id="role"><option>Student</option><option>Teacher</option><option>Friend</option><option>Other</option></select>
-          <label for="message">Message</label>
-          <textarea id="message" rows="4" placeholder="What did you like or what should improve?"></textarea>
-          <div style="display:flex;gap:10px">
-            <button type="submit" style="background:var(--accent)">Send Feedback</button>
-            <button type="button" id="clearFeedback" style="background:#ddd;color:#111">Clear All</button>
-          </div>
-        </form>
-
-        <div style="flex:1;min-width:300px">
-          <h4>Recent feedback</h4>
-          <div id="feedbackList" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h3>Contact</h3>
-      <p class="muted">Want to collaborate? Send a short message — this demo stores messages locally (no server) so it's safe to test.</p>
-      <form id="contactForm" class="card" style="max-width:720px">
-        <input id="c_name" placeholder="Your name" required>
-        <input id="c_email" placeholder="Email (optional)">
-        <textarea id="c_message" placeholder="Short message" rows="4"></textarea>
-        <div style="display:flex;gap:10px">
-          <button type="submit" style="background:var(--dark);color:var(--accent)">Send</button>
-          <button type="button" id="downloadData">Download Data</button>
-        </div>
-      </form>
-    </section>
-
-  </main>
-
-  <button id="topBtn" aria-label="Back to top">↑</button>
-
+  <!-- Footer -->
   <footer>
-    <div>&copy; <span id="year"></span> M Haris — Built for learning and fun. Made in Pakistan 🇵🇰</div>
-    <div class="small" style="margin-top:6px">This page stores feedback locally. To reset, use the Clear All button in Feedback.</div>
+    <p>© 2025 M Haris. All rights reserved.</p>
+    <p>
+      <a href="#">Twitter</a> | 
+      <a href="#">LinkedIn</a> | 
+      <a href="#">GitHub</a>
+    </p>
   </footer>
 
   <script>
-    // ---------- Small helpers ----------
-    const $ = (s,ctx=document)=>ctx.querySelector(s);
-    const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
-
-    // Preloader hide
-    window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),400)});
-
-    // Year
-    document.getElementById('year').innerText = new Date().getFullYear();
-
-    // Mobile nav toggle
-    const menuToggle = $('.menu-toggle');
-    const navLinks = $('#navLinks');
-    menuToggle.addEventListener('click',()=>{
-      const is = navLinks.classList.toggle('show');
-      menuToggle.setAttribute('aria-expanded', is);
+    // Dark mode toggle
+    const darkBtn = document.getElementById("darkToggle");
+    darkBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      darkBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
     });
 
-    // Smooth scroll for internal links
-    $$('.nav-links a').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        if(a.hash){
-          e.preventDefault();document.querySelector(a.hash).scrollIntoView({behavior:'smooth',block:'start'});
-          navLinks.classList.remove('show');
-        }
-      })
+    // Mobile menu slide-in
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
     });
-
-    // Back to top button
-    const topBtn = $('#topBtn');
-    window.addEventListener('scroll',()=>{if(window.scrollY>300)topBtn.style.display='block';else topBtn.style.display='none'});
-    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-    // Animate skill bars on view
-    const fills = $$('.fill');
-    const observer = new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){const el=e.target;const val=el.dataset.value;el.style.width=val+'%';observer.unobserve(el)}}),{threshold:0.4}
-   ;
-    fills.forEach(f=>observer.observe(f));
-
-    // LocalStorage-based feedback system
-    const FB_KEY = 'mharis_feedback_v1';
-    const feedbackForm = $('#feedbackForm');
-    const feedbackList = $('#feedbackList');
-    const clearBtn = $('#clearFeedback');
-
-    function loadFeedback(){
-      const raw = localStorage.getItem(FB_KEY);
-      const items = raw?JSON.parse(raw):[];
-      feedbackList.innerHTML = items.length?items.map(i=>`<div class="fb"><strong>${escapeHtml(i.name || 'Anonymous')}</strong> <small class="muted">(${escapeHtml(i.role)})</small><p style="margin-top:6px">${escapeHtml(i.message)}</p><small class="muted">${new Date(i.ts).toLocaleString()}</small></div>`).join(''):'<div class="muted">No feedback yet — be the first!</div>';
-    }
-    function saveFeedback(items){localStorage.setItem(FB_KEY,JSON.stringify(items));loadFeedback();}
-
-    feedbackForm.addEventListener('submit',e=>{
-      e.preventDefault();
-      const name = $('#name').value.trim();
-      const role = $('#role').value;
-      const message = $('#message').value.trim();
-      if(!message){alert('Please write a short message.');return}
-      const items = JSON.parse(localStorage.getItem(FB_KEY)||'[]');
-      items.unshift({name:name||'Anonymous',role,message,ts:Date.now()});
-      saveFeedback(items);
-      feedbackForm.reset();
-      alert('Thanks for the feedback — saved locally.');
-    });
-    clearBtn.addEventListener('click',()=>{if(confirm('Clear all feedback from this browser?')){localStorage.removeItem(FB_KEY);loadFeedback();}});
-    loadFeedback();
-
-    // Contact form saves to local storage too and allows download
-    const contactForm = $('#contactForm');
-    const downloadBtn = $('#downloadData');
-    const CONTACT_KEY = 'mharis_contact_v1';
-    contactForm.addEventListener('submit',e=>{e.preventDefault();const data={name:$('#c_name').value,email:$('#c_email').value,message:$('#c_message').value,ts:Date.now()};const arr=JSON.parse(localStorage.getItem(CONTACT_KEY)||'[]');arr.unshift(data);localStorage.setItem(CONTACT_KEY,JSON.stringify(arr));contactForm.reset();alert('Message saved locally. Use Download to get a copy.');});
-    downloadBtn.addEventListener('click',()=>{const d=localStorage.getItem(CONTACT_KEY)||'[]';const blob=new Blob([d],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='mharis_contacts.json';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)});
-
-    // Escape helper to avoid injection when rendering local content
-    function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
-
-    // Typing effect in hero (simple)
-    (function(){const el=document.createElement('div');el.style.marginTop='8px';el.style.fontFamily='monospace';el.style.color='var(--accent)';document.querySelector('.hero-content').appendChild(el);const texts=['Web developer in the making','JavaScript & UI experiments','Learning by building'];let ti=0,ci=0,del=false;function t(){const txt=texts[ti];el.textContent=txt.slice(0,ci);ci += del?-1:1;if(!del && ci===txt.length){del=true;setTimeout(t,1400)}else if(del && ci===0){del=false;ti=(ti+1)%texts.length;setTimeout(t,350)}else setTimeout(t,del?80:120)}t();})();
-
-    // Save theme preference
-    const THEME_KEY = 'mharis_theme';
-    function applyTheme(){if(localStorage.getItem(THEME_KEY)==='dark')document.documentElement.classList.add('dark-mode');else document.documentElement.classList.remove('dark-mode')}
-    applyTheme();
-    // small keyboard shortcut: t toggles theme
-    window.addEventListener('keydown',(e)=>{if(e.key.toLowerCase()==='t'){const next = document.documentElement.classList.toggle('dark-mode');localStorage.setItem(THEME_KEY,next?'dark':'light');}});
-
-    // Simple accessibility: focus outlines for keyboard users
-    document.body.addEventListener('keydown',e=>{if(e.key==='Tab')document.documentElement.style.scrollBehavior='smooth'});
-
-    // Optional: service worker registration (commented, requires sw file to fully work)
-    if('serviceWorker' in navigator){
-      // navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    }
-    // ---------------- LOGIN / SIGNUP ----------------
-  const loginLink = $('#loginLink');
-  const signupLink = $('#signupLink');
-  const logoutBtn = $('#logoutBtn');
-  const userGreeting = $('#userGreeting');
-
-  function updateUserUI(){
-    const user = localStorage.getItem('mharis_user');
-    if(user){
-      userGreeting.textContent = `Hello, ${user} 👋`;
-      loginLink.style.display='none';
-      signupLink.style.display='none';
-      logoutBtn.style.display='inline';
-    } else {
-      userGreeting.textContent = 'Web dev • Learner • Creator';
-      loginLink.style.display='inline';
-      signupLink.style.display='inline';
-      logoutBtn.style.display='none';
-    }
-  }
-  updateUserUI();
-
-  loginLink.addEventListener('click',()=>{
-    const name = prompt('Enter your username to login:');
-    if(name) { localStorage.setItem('mharis_user', name); updateUserUI(); alert('Logged in as '+name); }
-  });
-
-  signupLink.addEventListener('click',()=>{
-    const name = prompt('Enter your username to sign up:');
-    if(name) { localStorage.setItem('mharis_user', name); updateUserUI(); alert('Signed up and logged in as '+name); }
-  });
-
-  logoutBtn.addEventListener('click',()=>{
-    if(confirm('Do you want to logout?')) { localStorage.removeItem('mharis_user'); updateUserUI(); alert('Logged out'); }
-  });
-
-
   </script>
+
 </body>
 </html>
